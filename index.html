@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Cat-alogue</title>
+	</head>
+	<body id="body">
+		<h1 id="title"> Welcome to the Cat-alogue </h1>
+		<table align="center">		
+			<tr id="menu">
+				<td><a href="http://www.cs.mcgill.ca/~ssaqui/home.html">Home</a></td>
+				<td><a href="http://www.cs.mcgill.ca/~ssaqui/catalogue.html">Cat-alogue</a></td>
+			</tr>
+		</table>		
+		<div id="page-container">
+			<div id = "information">
+				<h3>Go ahead and take a pick, select your new furry friend(s)</h3>
+				<p>Check the box of your selection, and pick the number of cats you want to buy.</p>
+			</div>
+			<div id = "catalogue">
+				<form name="total" method="post" action="http://www.cs.mcgill.ca/~ssaqui/cgi-bin/Purchase.py">
+				<table id="catalogue-table" align="center">					
+					<tr class="image-row">
+						<td><img src ="http://www.cs.mcgill.ca/~ssaqui/cgi-bin/Cat_pics/ExoSH.jpeg"/></td>
+						<td><img src ="http://www.cs.mcgill.ca/~ssaqui/cgi-bin/Cat_pics/Russian.jpeg"/></td>
+						<td><img src="http://www.cs.mcgill.ca/~ssaqui/cgi-bin/Cat_pics/Chartreux.jpeg"/></td>	
+					</tr>
+					<tr class="description-row">
+						<td>		
+							<label class="name" for="ExoShortHair">Exotic Short Hair</label>
+							<p>Always wanted a cat that looks like Garfield? Well now you can<br>
+							   have one, cause we have them. Buy one and you can cosy up next<br>
+						      	   to your new furry friend during the cold winter nights.</p>
+						</td>
+						<td>								
+							<label class="name" for="Russian">Russian Blue</label>	
+							<p>These intelligent creatures make great companions for almost anyone.<br>
+							   they are realtively low maintenance and high fun.<br>
+							   Gently pet you new furry friend, while sipping away your<br>
+							   vodka as you plan to take over the world.</p>
+						</td>
+						<td>							
+							<label class="name" for="Chartreux">Chartreux</label>
+							<p>A rare breed of cat that make great companions and even better<br>
+							   Christmas presents. With the holiday season coming up when not get one<br>
+							   for a friend, family or your professor even, and who knows you might<br>
+							   be celebrating more than christmas once you get your grades.</p>
+						</td>						
+					</tr>
+					<tr class="purchase-row">
+						<td>Purchase:<input type="checkbox" name="ExoSH" value="buy"/><br>
+						    <p>Quantity:<input type="number" name="ExoSH_quantity" min="0" value="0"/></p>						
+						</td>
+						<td>Purchase:<input type="checkbox" name="Russian" value="buy"/><br>
+						    <p>Quantity:<input type="number" name="Russian_quantity" min="0" value="0"/></p>			
+						</td>
+						<td>Purchase:<input type="checkbox" name="Chartreux" value="buy"/><br>
+						    <p>Quantity:<input type="number" name="Chartreux_quantity" min="0" value="0"/></p>			
+						</td>
+					</tr>
+					<tr class="image-row">
+						<td><img src="http://www.cs.mcgill.ca/~ssaqui/cgi-bin/Cat_pics/Siamese.jpeg"/></td>
+						<td><img src="http://www.cs.mcgill.ca/~ssaqui/cgi-bin/Cat_pics/BritSH.jpeg"/></td>
+						<td><img src="http://www.cs.mcgill.ca/~ssaqui/cgi-bin/Cat_pics/Bengal.jpeg"/></td>
+					</tr>
+					<tr class="description-row">
+						<td>							
+							<label class="name" for="Siamese">Siamese Cat</label>
+							<p>Siamese Cats are much sought after by most breeders<br>
+							   so buy one and become the envy of all your freinds while<br>
+  							   winning all those cat competitions in your neighbourhood.</p>
+
+						</td>
+						<td>							
+							<label class="name" for="BritShorthair">British Short Hair</label>
+							<p>If you want a sophisticated friend by your side at all times,<br>
+							   then this is the right companion for you.<br>
+							   Enjoy your tea-time with your new royal friend.</p> 
+						</td>
+						<td>							
+							<label class="name" for="Bengal">Bengal Cat</label>
+							<p>Always wanted a tiger? But just can't afford one?<br>
+							   Well we have the next best thing, the Bengal Cat.<br>
+							   A distant cousin of the Royal Bengal Tiger,<br>
+						           owning one will certainly make you feel like Mike Tyson.</p> 
+						</td>
+					</tr>
+					<tr class="purchase-row">
+						<td>Purchase:<input type="checkbox" name="Siamese" value="buy"/><br>
+						    <p>Quantity:<input type="number" name="Siamese_quantity" min="0" value="0"/></p>			
+						</td>
+						<td>Purchase:<input type="checkbox" name="BritSH" value="buy"/><br>
+						    <p>Quantity:<input type="number" name="BritSH_quantity" min="0" value="0"/></p>			
+						</td>
+						<td>Purchase:<input type="checkbox" name="Bengal" value="buy"/><br>
+						    <p>Quantity:<input type="number" name="Bengal_quantity" min="0" value="0"/></p>			
+						</td>
+					</tr>
+					<tr id="submit-wrap">
+						<td colspan="3"><input type="submit" value="Confirm Purchase"></td>
+					</tr>					
+				</table>
+				</form>
+			<br><br><br>			
+			</div>		
+	</body>
+</html>
+<style>
+	#body
+	{
+		background-image:url("http://www.cs.mcgill.ca/~ssaqui/cgi-bin/Cat_pics/Background2.jpg");
+
+	}
+	#title
+	{
+		text-align:center;
+	}
+	#menu
+	{
+		text-align:center;		
+	}
+	#page-container
+	{
+		position:relative;
+	}
+	#information
+	{
+		text-align:center;
+	}
+	#catalogue
+	{
+		
+	}
+	#catalogue-table
+	{
+		text-align:center;
+	}
+	.description-row
+	{
+		color:#6666B2;
+	}
+	.name
+	{ 
+		font-weight:bold; 
+	}
+	.purchase-row
+	{
+		color:#6666B2;
+		font-weight: 900;
+	}
+	#submit-wrap
+	{
+		text-align:center;
+	}	
+</style>
+
