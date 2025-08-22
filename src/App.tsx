@@ -1,14 +1,5 @@
-import { styled, theme, darkTheme } from "./stitches.config";
 import { useState } from "react";
-// import {
-//   PanelRightOpen,
-//   PanelRightClose,
-//   SquareMenu,
-//   SquareX,
-//   Sun,
-//   Moon,
-// } from "lucide-react";
-
+import { styled, darkTheme } from "./stitches.config";
 import {
   StyledPanelRightOpen as PanelRightOpen,
   StyledPanelRightClose as PanelRightClose,
