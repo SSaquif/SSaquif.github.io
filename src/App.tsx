@@ -1,41 +1,66 @@
-import { styled } from "./stitches-theme";
+import { styled, theme, darkTheme } from "./stitches.config";
 import { useState } from "react";
+// import {
+//   PanelRightOpen,
+//   PanelRightClose,
+//   SquareMenu,
+//   SquareX,
+//   Sun,
+//   Moon,
+// } from "lucide-react";
+
 import {
-  PanelRightOpen,
-  PanelRightClose,
-  SquareMenu,
-  SquareX,
-} from "lucide-react";
+  StyledPanelRightOpen as PanelRightOpen,
+  StyledPanelRightClose as PanelRightClose,
+  StyledSquareMenu as SquareMenu,
+  StyledSquareX as SquareX,
+  StyledSun as Sun,
+  StyledMoon as Moon,
+} from "./components/Icons";
 
 function App() {
   const [asideOpen, setAsideOpen] = useState(true);
   const [navOpen, setNavOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <Container>
+    <Container className={darkMode ? darkTheme.className : ""}>
       <Header>
-        <HamburgerButton onClick={() => setNavOpen(!navOpen)}>
-          {navOpen ? <SquareX /> : <SquareMenu />}
-        </HamburgerButton>
-        <h1>My Website</h1>
-        <AsideButton onClick={() => setAsideOpen(!asideOpen)}>
-          {asideOpen ? <PanelRightClose /> : <PanelRightOpen />}
-        </AsideButton>
+        <HeaderItemContainer>
+          <HamburgerButton onClick={() => setNavOpen(!navOpen)}>
+            {navOpen ? <SquareX /> : <SquareMenu />}
+          </HamburgerButton>
+        </HeaderItemContainer>
+        <Title>My Website</Title>
+        <DesktopHeaderButtonContainer>
+          <ThemeToggle onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? <Sun /> : <Moon />}
+          </ThemeToggle>
+          <AsideButton onClick={() => setAsideOpen(!asideOpen)}>
+            {asideOpen ? <PanelRightClose /> : <PanelRightOpen />}
+          </AsideButton>
+        </DesktopHeaderButtonContainer>
       </Header>
       <Middle>
         <Main expanded={!asideOpen}>
-          <p>Welcome to my website!</p>
+          <Text>Welcome to my website!</Text>
         </Main>
         <Aside open={asideOpen}>
           <p>Aside for Navigation</p>
+          <Button>Click Me</Button>
         </Aside>
       </Middle>
       <Footer>
-        <p>© 2025 Sadnan Saquif</p>
+        <CopyrightText>
+          © 2025 Sadnan Saquif. All rights reserved.
+        </CopyrightText>
       </Footer>
 
       {/* Mobile Drawer */}
       <NavDrawer open={navOpen}>
+        <ThemeToggleMobile onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? <Sun /> : <Moon />}
+        </ThemeToggleMobile>
         <p>Mobile navigation</p>
       </NavDrawer>
     </Container>
@@ -46,7 +71,7 @@ const Container = styled("div", {
   display: "flex",
   flexDirection: "column",
   height: "100%",
-  border: "3px solid red",
+  background: "$primaryBackground",
 
   "@supports (height: 100dvh)": {
     height: "100dvh", // Use 100dvh if supported
@@ -54,10 +79,30 @@ const Container = styled("div", {
 });
 
 const Header = styled("header", {
-  border: "1px solid black",
+  background: "$secondaryBackground",
   display: "flex",
   justifyContent: "space-between",
   flexDirection: "row",
+});
+
+const HeaderItemContainer = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  gap: "0.5rem",
+});
+
+const DesktopHeaderButtonContainer = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  gap: "0.5rem",
+
+  "@mobileAndDown": {
+    display: "none", // hide container on mobile devices
+  },
+});
+
+const Title = styled("h1", {
+  color: "$headline",
 });
 
 const Middle = styled("section", {
@@ -66,19 +111,32 @@ const Middle = styled("section", {
 });
 
 const Main = styled("main", {
-  border: "5px solid green",
-  transition: "flex 0.3s ease",
+  borderWidth: "0.2rem",
+  borderStyle: "solid",
+  borderColor: "$border",
+  borderLeft: "none",
+  transition: "flex 0.3s ease, border 0.3s ease",
+  background: "$primaryBackground",
 
   variants: {
     expanded: {
       true: {
         flex: "1 0 100%",
+        borderRight: "none",
       },
       false: {
         flex: 5,
       },
     },
   },
+
+  "@mobileAndDown": {
+    borderRight: "none",
+  },
+});
+
+const Text = styled("p", {
+  color: "$primaryText",
 });
 
 const AsideButton = styled("button", {
@@ -93,10 +151,10 @@ const AsideButton = styled("button", {
 });
 
 const Aside = styled("aside", {
-  border: "1px solid blue",
-  background: "#f3f3f3",
+  background: "$secondaryBackground",
   overflow: "hidden", // hides content when collapsed
   transition: "flex-basis 0.3s ease, opacity 0.3s ease",
+  padding: "0.15rem",
 
   variants: {
     open: {
@@ -118,9 +176,47 @@ const Aside = styled("aside", {
   },
 });
 
+const Button = styled("button", {
+  padding: "0.5rem 1rem",
+  background: "$button",
+  color: "$buttonText",
+  border: "none",
+  cursor: "pointer",
+  "&:hover": {
+    backgroundColor: "$highlight",
+    color: "$highlightText",
+  },
+});
+
 const Footer = styled("footer", {
+  background: "$secondaryBackground",
   display: "flex",
   justifyContent: "flex-end",
+});
+
+const CopyrightText = styled("p", {
+  color: "$lighterText",
+});
+
+const ThemeToggle = styled("button", {
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  fontSize: "1.5rem",
+  "@mobileAndDown": {
+    display: "none", // hide toggle on mobile devices
+  },
+});
+
+const ThemeToggleMobile = styled("button", {
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  fontSize: "1.5rem",
+
+  "@tabletAndUp": {
+    display: "none", // hide toggle on larger screens
+  },
 });
 
 /**
@@ -142,9 +238,9 @@ const NavDrawer = styled("nav", {
   top: 0,
   right: 0,
   bottom: 0,
-  width: "250px",
-  background: "white",
-  borderLeft: "1px solid #ddd",
+  width: "80%",
+  background: "$secondaryBackground",
+  borderLeft: "0.3rem solid $border",
   boxShadow: "-4px 0 12px rgba(0,0,0,0.1)",
   transform: "translateX(100%)",
   transition: "transform 0.3s ease",

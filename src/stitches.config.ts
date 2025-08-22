@@ -11,7 +11,7 @@ const BREAKPOINTS = {
   desktopMin: 1500,
 };
 
-export const { styled, css, keyframes } = createStitches({
+export const { styled, css, keyframes, theme } = createStitches({
   media: {
     // desktop first breakpoints
     mobileAndDown: `(max-width: ${BREAKPOINTS.mobileMax / 16}rem)`,
@@ -25,27 +25,39 @@ export const { styled, css, keyframes } = createStitches({
 
   theme: {
     colors: {
-      primaryBackground: "hsl(60, 100%, 100%)",
-      secondaryBackground: "hsl(0, 0%, 95%)",
-      headline: "hsl(214, 100%, 20%)",
-      text: "hsl(214, 100%, 30%)",
+      primaryBackground: "hsl(30, 30%, 96%)",
+      secondaryBackground: "hsl(140, 100%, 90%)",
+      border: "hsl(170, 100%, 30%)",
+      headline: "hsl(208, 37%, 10%)",
+      primaryText: "hsl(208, 37%, 20%)",
+      lighterText: "hsl(208, 37%, 35%)",
+      darkerText: "hsl(207, 36%, 5%)",
       link: "hsl(214, 100%, 40%)",
-      button: "hsl(214, 100%, 50%)",
-      highlight: "hsl(214, 100%, 40%)",
-      border: "hsl(214, 100%, 80%)",
+      visitedLink: "hsl(336, 100%, 50%)",
+      button: "hsl(180, 90%, 26%)",
+      buttonText: "hsl(60, 100%, 100%)",
+      highlight: "hsl(190, 96%, 26%)",
+      highlightText: "hsl(60, 100%, 100%)",
+      accent: "hsl(349, 84%, 60%)",
     },
   },
 });
 
 export const darkTheme = createTheme("dark-theme", {
   colors: {
-    primaryBackground: "hsl(214, 100%, 10%)",
-    secondaryBackground: "hsl(214, 100%, 15%)",
-    headline: "hsl(60, 100%, 90%)",
-    text: "hsl(60, 100%, 80%)",
-    link: "hsl(60, 100%, 70%)",
-    button: "hsl(60, 100%, 60%)",
-    highlight: "hsl(60, 100%, 70%)",
-    border: "hsl(214, 100%, 30%)",
+    primaryBackground: "hsl(177, 100%, 14%)",
+    secondaryBackground: "hsl(177, 100%, 25%)",
+    border: "hsl(60, 100%, 100%)",
+    headline: "hsl(60, 100%, 100%)",
+    primaryText: "hsl(163, 29%, 75%)",
+    lighterText: "hsl(163, 29%, 85%)",
+    darkerText: "hsl(163, 29%, 55%)",
+    link: "hsl(206, 100%, 80%)",
+    visitedLink: "hsl(336, 100%, 70%)",
+    button: "hsl(36, 93%, 68%)",
+    buttonText: "hsl(60, 100%, 100%)",
+    highlight: "hsl(36, 93%, 50%)",
+    highlightText: "hsl(60, 100%, 100%)",
+    accent: "hsl(360, 68%, 63%)",
   },
 });
