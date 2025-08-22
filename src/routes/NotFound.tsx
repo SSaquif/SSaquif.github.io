@@ -1,5 +1,5 @@
 import { useRouteError } from "react-router-dom";
-import { styled } from "../stitches-theme";
+import { styled } from "../stitches.config";
 
 function Notfound() {
   // todo: fix typing

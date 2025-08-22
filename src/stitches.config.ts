@@ -1,8 +1,4 @@
-import { createStitches } from "@stitches/react";
-
-// const BREAKPOINTS = {
-
-// };
+import { createStitches, createTheme } from "@stitches/react";
 
 const BREAKPOINTS = {
   // desktop first breakpoints
@@ -29,17 +25,27 @@ export const { styled, css, keyframes } = createStitches({
 
   theme: {
     colors: {
-      // primary: "hsl(214, 100%, 50%)",
-      // primaryLight: "hsl(214, 100%, 70%)",
-      // primaryDark: "hsl(214, 100%, 30%)",
-      // secondary: "hsl(0, 100%, 50%)",
-      // secondaryLight: "hsl(0, 100%, 70%)",
-      // secondaryDark: "hsl(0, 100%, 30%)",
-      // background: "hsl(0, 0%, 95%)",
-      // backgroundDark: "hsl(0, 0%, 10%)",
-      // text: "hsl(0, 0%, 20%)",
-      // textLight: "hsl(0, 0%, 80%)",
-      // textDark: "hsl(0, 0%, 10%)",
+      primaryBackground: "hsl(60, 100%, 100%)",
+      secondaryBackground: "hsl(0, 0%, 95%)",
+      headline: "hsl(214, 100%, 20%)",
+      text: "hsl(214, 100%, 30%)",
+      link: "hsl(214, 100%, 40%)",
+      button: "hsl(214, 100%, 50%)",
+      highlight: "hsl(214, 100%, 40%)",
+      border: "hsl(214, 100%, 80%)",
     },
+  },
+});
+
+export const darkTheme = createTheme("dark-theme", {
+  colors: {
+    primaryBackground: "hsl(214, 100%, 10%)",
+    secondaryBackground: "hsl(214, 100%, 15%)",
+    headline: "hsl(60, 100%, 90%)",
+    text: "hsl(60, 100%, 80%)",
+    link: "hsl(60, 100%, 70%)",
+    button: "hsl(60, 100%, 60%)",
+    highlight: "hsl(60, 100%, 70%)",
+    border: "hsl(214, 100%, 30%)",
   },
 });
