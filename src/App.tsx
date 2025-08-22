@@ -115,7 +115,7 @@ const Main = styled("main", {
   borderStyle: "solid",
   borderColor: "$border",
   borderLeft: "none",
-  transition: "flex 0.3s ease, border 0.3s ease",
+  transition: "flex 0.5s ease, border 0.5s ease",
   background: "$primaryBackground",
 
   variants: {
@@ -123,6 +123,7 @@ const Main = styled("main", {
       true: {
         flex: "1 0 100%",
         borderRight: "none",
+        transition: "flex 0.5s ease, borderRight 0.5s ease",
       },
       false: {
         flex: 5,
@@ -240,10 +241,10 @@ const NavDrawer = styled("nav", {
   bottom: 0,
   width: "80%",
   background: "$secondaryBackground",
-  borderLeft: "0.3rem solid $border",
+  borderLeft: "0.2rem solid $border",
   boxShadow: "-4px 0 12px rgba(0,0,0,0.1)",
   transform: "translateX(100%)",
-  transition: "transform 0.3s ease",
+  transition: "transform 0.3s ease, border 0.3s ease",
   padding: "1rem",
 
   variants: {
