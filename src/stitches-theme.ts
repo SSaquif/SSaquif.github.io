@@ -1,17 +1,32 @@
 import { createStitches } from "@stitches/react";
 
+// const BREAKPOINTS = {
+
+// };
+
 const BREAKPOINTS = {
+  // desktop first breakpoints
+  mobileMax: 550,
+  tabletMax: 1100,
+  laptopMax: 1500,
+  // mobile first breakpoints
   tabletMin: 550,
   laptopMin: 1100,
   desktopMin: 1500,
 };
 
-export const { styled, css } = createStitches({
+export const { styled, css, keyframes } = createStitches({
   media: {
+    // desktop first breakpoints
+    mobileAndDown: `(max-width: ${BREAKPOINTS.mobileMax / 16}rem)`,
+    tabletAndDown: `(max-width: ${BREAKPOINTS.tabletMax / 16}rem)`,
+    laptopAndDown: `(max-width: ${BREAKPOINTS.laptopMax / 16}rem)`,
+    // mobile first breakpoints
     tabletAndUp: `(min-width: ${BREAKPOINTS.tabletMin / 16}rem)`,
     laptopAndUp: `(min-width: ${BREAKPOINTS.laptopMin / 16}rem)`,
     desktopAndUp: `(min-width: ${BREAKPOINTS.desktopMin / 16}rem)`,
   },
+
   theme: {
     colors: {
       // primary: "hsl(214, 100%, 50%)",
