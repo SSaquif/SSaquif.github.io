@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { styled, darkTheme } from "./stitches.config";
+import { Outlet } from "react-router-dom";
+import { styled, darkTheme } from "../stitches.config";
 import {
   StyledPanelRightOpen as PanelRightOpen,
   StyledPanelRightClose as PanelRightClose,
@@ -7,9 +8,9 @@ import {
   StyledSquareX as SquareX,
   StyledSun as Sun,
   StyledMoon as Moon,
-} from "./components/Icons";
+} from "../components/Icons";
 
-function App() {
+function HomeLayout() {
   const [asideOpen, setAsideOpen] = useState(true);
   const [navOpen, setNavOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -34,17 +35,14 @@ function App() {
       </Header>
       <Middle>
         <Main expanded={!asideOpen}>
-          <Text>Welcome to my website!</Text>
+          <Outlet context={{ slot: "main" }} />
         </Main>
         <Aside open={asideOpen}>
-          <p>Aside for Navigation</p>
-          <Button>Click Me</Button>
+          <Outlet context={{ slot: "aside" }} />
         </Aside>
       </Middle>
       <Footer>
-        <CopyrightText>
-          © 2025 Sadnan Saquif. All rights reserved.
-        </CopyrightText>
+        <CopyrightText>© 2025 Sadnan Saquif</CopyrightText>
       </Footer>
 
       {/* Mobile Drawer */}
@@ -52,7 +50,7 @@ function App() {
         <ThemeToggleMobile onClick={() => setDarkMode(!darkMode)}>
           {darkMode ? <Sun /> : <Moon />}
         </ThemeToggleMobile>
-        <p>Mobile navigation</p>
+        <Outlet context={{ slot: "mobileDrawer" }} />
       </NavDrawer>
     </Container>
   );
@@ -108,6 +106,8 @@ const Main = styled("main", {
   borderLeft: "none",
   transition: "flex 0.5s ease, border 0.5s ease",
   background: "$primaryBackground",
+  // Might move this into a Outlet container
+  padding: "2.5rem 20%",
 
   variants: {
     expanded: {
@@ -125,10 +125,6 @@ const Main = styled("main", {
   "@mobileAndDown": {
     borderRight: "none",
   },
-});
-
-const Text = styled("p", {
-  color: "$primaryText",
 });
 
 const AsideButton = styled("button", {
@@ -165,18 +161,6 @@ const Aside = styled("aside", {
 
   "@mobileAndDown": {
     display: "none", // hide aside on mobile devices
-  },
-});
-
-const Button = styled("button", {
-  padding: "0.5rem 1rem",
-  background: "$button",
-  color: "$buttonText",
-  border: "none",
-  cursor: "pointer",
-  "&:hover": {
-    backgroundColor: "$highlight",
-    color: "$highlightText",
   },
 });
 
@@ -250,4 +234,4 @@ const NavDrawer = styled("nav", {
   },
 });
 
-export default App;
+export default HomeLayout;
