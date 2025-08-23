@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { styled, darkTheme } from "../stitches.config";
 import {
@@ -9,35 +8,41 @@ import {
   StyledSun as Sun,
   StyledMoon as Moon,
 } from "../components/Icons";
+import { useSiteState } from "../context/SiteStateContext";
 
 function HomeLayout() {
-  const [asideOpen, setAsideOpen] = useState(true);
-  const [navOpen, setNavOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const {
+    rightAsideOpen,
+    toggleRightAside,
+    mobileDrawerOpen,
+    toggleMobileDrawer,
+    darkMode,
+    toggleDarkMode,
+  } = useSiteState();
 
   return (
     <Container className={darkMode ? darkTheme.className : ""}>
       <Header>
         <HeaderItemContainer>
-          <HamburgerButton onClick={() => setNavOpen(!navOpen)}>
-            {navOpen ? <SquareX /> : <SquareMenu />}
+          <HamburgerButton onClick={toggleMobileDrawer}>
+            {mobileDrawerOpen ? <SquareX /> : <SquareMenu />}
           </HamburgerButton>
         </HeaderItemContainer>
         <Title>My Website</Title>
         <DesktopHeaderButtonContainer>
-          <ThemeToggle onClick={() => setDarkMode(!darkMode)}>
+          <ThemeToggle onClick={toggleDarkMode}>
             {darkMode ? <Sun /> : <Moon />}
           </ThemeToggle>
-          <AsideButton onClick={() => setAsideOpen(!asideOpen)}>
-            {asideOpen ? <PanelRightClose /> : <PanelRightOpen />}
+          <AsideButton onClick={toggleRightAside}>
+            {rightAsideOpen ? <PanelRightClose /> : <PanelRightOpen />}
           </AsideButton>
         </DesktopHeaderButtonContainer>
       </Header>
       <Middle>
-        <Main expanded={!asideOpen}>
+        <Main expanded={!rightAsideOpen}>
           <Outlet context={{ slot: "main" }} />
         </Main>
-        <Aside open={asideOpen}>
+        <Aside open={rightAsideOpen}>
           <Outlet context={{ slot: "aside" }} />
         </Aside>
       </Middle>
@@ -46,8 +51,8 @@ function HomeLayout() {
       </Footer>
 
       {/* Mobile Drawer */}
-      <NavDrawer open={navOpen}>
-        <ThemeToggleMobile onClick={() => setDarkMode(!darkMode)}>
+      <NavDrawer open={mobileDrawerOpen}>
+        <ThemeToggleMobile onClick={toggleDarkMode}>
           {darkMode ? <Sun /> : <Moon />}
         </ThemeToggleMobile>
         <Outlet context={{ slot: "mobileDrawer" }} />
@@ -106,8 +111,6 @@ const Main = styled("main", {
   borderLeft: "none",
   transition: "flex 0.5s ease, border 0.5s ease",
   background: "$primaryBackground",
-  // Might move this into a Outlet container
-  padding: "2.5rem 20%",
 
   variants: {
     expanded: {
