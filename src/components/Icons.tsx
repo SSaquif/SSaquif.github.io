@@ -10,6 +10,10 @@ import {
 
 const Icon = styled("span", {
   color: "$border",
+  opacity: 0.7,
+  "&:hover": {
+    opacity: 1,
+  },
   "& svg": {
     stroke: "currentColor",
   },
