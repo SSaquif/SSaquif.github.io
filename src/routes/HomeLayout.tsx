@@ -28,7 +28,6 @@ function HomeLayout() {
             {mobileDrawerOpen ? <SquareX /> : <SquareMenu />}
           </HamburgerButton>
         </HeaderItemContainer>
-        <Title>My Website</Title>
         <DesktopHeaderButtonContainer>
           <ThemeToggle onClick={toggleDarkMode}>
             {darkMode ? <Sun /> : <Moon />}
@@ -77,6 +76,7 @@ const Header = styled("header", {
   display: "flex",
   justifyContent: "space-between",
   flexDirection: "row",
+  minHeight: "3rem",
 });
 
 const HeaderItemContainer = styled("div", {
@@ -93,10 +93,6 @@ const DesktopHeaderButtonContainer = styled("div", {
   "@mobileAndDown": {
     display: "none", // hide container on mobile devices
   },
-});
-
-const Title = styled("h1", {
-  color: "$headline",
 });
 
 const Middle = styled("section", {

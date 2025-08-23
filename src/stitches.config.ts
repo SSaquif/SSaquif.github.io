@@ -11,6 +11,25 @@ const BREAKPOINTS = {
   desktopMin: 1500,
 };
 
+export const darkTheme = createTheme("dark-theme", {
+  colors: {
+    primaryBackground: "hsl(177, 100%, 14%)",
+    secondaryBackground: "hsl(177, 100%, 25%)",
+    border: "hsl(60, 100%, 100%)",
+    headline: "hsl(60, 100%, 100%)",
+    primaryText: "hsl(163, 29%, 75%)",
+    lighterText: "hsl(163, 29%, 85%)",
+    darkerText: "hsl(163, 29%, 55%)",
+    link: "hsl(206, 100%, 80%)",
+    visitedLink: "hsl(336, 100%, 70%)",
+    button: "hsl(36, 93%, 68%)",
+    buttonText: "hsl(60, 100%, 100%)",
+    highlight: "hsl(36, 93%, 50%)",
+    highlightText: "hsl(60, 100%, 100%)",
+    accent: "hsl(360, 68%, 63%)",
+  },
+});
+
 export const { styled, css, keyframes, theme } = createStitches({
   media: {
     // desktop first breakpoints
@@ -40,24 +59,48 @@ export const { styled, css, keyframes, theme } = createStitches({
       highlightText: "hsl(60, 100%, 100%)",
       accent: "hsl(349, 84%, 60%)",
     },
-  },
-});
 
-export const darkTheme = createTheme("dark-theme", {
-  colors: {
-    primaryBackground: "hsl(177, 100%, 14%)",
-    secondaryBackground: "hsl(177, 100%, 25%)",
-    border: "hsl(60, 100%, 100%)",
-    headline: "hsl(60, 100%, 100%)",
-    primaryText: "hsl(163, 29%, 75%)",
-    lighterText: "hsl(163, 29%, 85%)",
-    darkerText: "hsl(163, 29%, 55%)",
-    link: "hsl(206, 100%, 80%)",
-    visitedLink: "hsl(336, 100%, 70%)",
-    button: "hsl(36, 93%, 68%)",
-    buttonText: "hsl(60, 100%, 100%)",
-    highlight: "hsl(36, 93%, 50%)",
-    highlightText: "hsl(60, 100%, 100%)",
-    accent: "hsl(360, 68%, 63%)",
+    // Placeholder for future theme tokens
+    // fonts: {
+    //   heading: "Georgia, serif",
+    //   body: "system-ui, sans-serif",
+    //   mono: "Menlo, monospace",
+    // },
+
+    fontSizes: {
+      xs: "0.75rem",
+      sm: "0.875rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem",
+    },
+
+    lineHeights: {
+      tight: 1.2,
+      normal: 1.5,
+      relaxed: 1.75,
+    },
+
+    shadows: {
+      sm: "0 1px 2px rgba(0,0,0,0.05)",
+      md: "0 4px 6px rgba(0,0,0,0.1)",
+      lg: "0 10px 15px rgba(0,0,0,0.15)",
+    },
+
+    zIndices: {
+      base: 0,
+      dropdown: 1000,
+      modal: 2000,
+      tooltip: 3000,
+    },
+
+    transitions: {
+      fast: "150ms ease-in-out",
+      normal: "300ms ease-in-out",
+      slow: "500ms ease-in-out",
+    },
   },
 });
