@@ -84,6 +84,7 @@ const Header = styled("header", {
   "@mobileAndDown": {
     position: "sticky",
     top: 0,
+    borderBottom: "0.2rem solid $border",
   },
 });
 
@@ -135,7 +136,7 @@ const Main = styled("main", {
   },
 
   "@mobileAndDown": {
-    borderRight: "none",
+    border: "none",
   },
 });
 
@@ -182,6 +183,9 @@ const Footer = styled("footer", {
   background: "$secondaryBackground",
   display: "flex",
   justifyContent: "flex-end",
+  "@mobileAndDown": {
+    borderTop: "0.2rem solid $border",
+  },
 });
 
 const CopyrightText = styled("p", {
