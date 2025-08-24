@@ -61,22 +61,30 @@ function HomeLayout() {
 }
 
 const Container = styled("div", {
+  background: "$primaryBackground",
   display: "flex",
   flexDirection: "column",
   height: "100%",
-  background: "$primaryBackground",
+  // to prevent overflow and scroll, scroll will be inside main (& aside if ever needed)
+  maxHeight: "100vh",
 
   "@supports (height: 100dvh)": {
     height: "100dvh", // Use 100dvh if supported
+    maxHeight: "100dvh",
   },
 });
 
 const Header = styled("header", {
   background: "$secondaryBackground",
   display: "flex",
-  justifyContent: "space-between",
   flexDirection: "row",
+  justifyContent: "space-between",
   minHeight: "3rem",
+  // mobile will have sticky header
+  "@mobileAndDown": {
+    position: "sticky",
+    top: 0,
+  },
 });
 
 const HeaderItemContainer = styled("div", {
@@ -98,15 +106,20 @@ const DesktopHeaderButtonContainer = styled("div", {
 const Middle = styled("section", {
   display: "flex",
   flexGrow: 1,
+  // so that there is no scroll when aside is closed
+  "@tabletAndUp": {
+    overflowX: "hidden",
+  },
 });
 
 const Main = styled("main", {
+  background: "$primaryBackground",
   borderWidth: "0.2rem",
   borderStyle: "solid",
   borderColor: "$border",
   borderLeft: "none",
   transition: "flex 0.5s ease, border 0.5s ease",
-  background: "$primaryBackground",
+  overflow: "scroll",
 
   variants: {
     expanded: {
@@ -142,6 +155,8 @@ const Aside = styled("aside", {
   overflow: "hidden", // hides content when collapsed
   transition: "flex-basis 0.3s ease, opacity 0.3s ease",
   padding: "0.15rem",
+  // position: "sticky",
+  // top: "3rem",
 
   variants: {
     open: {
@@ -203,8 +218,9 @@ const HamburgerButton = styled("button", {
   fontSize: "1.5rem",
   cursor: "pointer",
 
+  // larger screens hides hamburger
   "@tabletAndUp": {
-    display: "none", // larger screens hides hamburger
+    display: "none",
   },
 });
 
@@ -228,8 +244,9 @@ const NavDrawer = styled("nav", {
     },
   },
 
+  // larger screens hides nav drawer
   "@tabletAndUp": {
-    display: "none", // larger screens hides nav drawer
+    display: "none",
   },
 });
 
