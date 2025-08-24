@@ -15,7 +15,7 @@ export const darkTheme = createTheme("dark-theme", {
   colors: {
     primaryBackground: "hsl(177, 100%, 14%)",
     secondaryBackground: "hsl(177, 100%, 25%)",
-    border: "hsl(60, 100%, 100%)",
+    border: "hsl(360, 100%, 0%)",
     headline: "hsl(60, 100%, 100%)",
     primaryText: "hsl(163, 29%, 75%)",
     lighterText: "hsl(163, 29%, 85%)",
