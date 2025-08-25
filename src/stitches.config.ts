@@ -13,8 +13,9 @@ const BREAKPOINTS = {
 
 export const darkTheme = createTheme("dark-theme", {
   colors: {
-    primaryBackground: "hsl(177, 100%, 14%)",
-    secondaryBackground: "hsl(177, 100%, 25%)",
+    // secondaryBackground: "hsl(177, 100%, 25%)",
+    primaryBackground: "hsl(180, 84%, 12%)",
+    secondaryBackground: "hsl(177, 100%, 14%)",
     border: "hsl(360, 100%, 0%)",
     headline: "hsl(60, 100%, 100%)",
     primaryText: "hsl(163, 29%, 75%)",
@@ -24,7 +25,8 @@ export const darkTheme = createTheme("dark-theme", {
     visitedLink: "hsl(336, 100%, 70%)",
     button: "hsl(36, 93%, 68%)",
     buttonText: "hsl(60, 100%, 100%)",
-    highlight: "hsl(36, 93%, 50%)",
+    // highlight: "hsl(36, 93%, 50%)",
+    highlight: "hsl(190, 96%, 26%)",
     highlightText: "hsl(60, 100%, 100%)",
     accent: "hsl(360, 68%, 63%)",
   },

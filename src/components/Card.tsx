@@ -2,20 +2,30 @@ import { styled } from "../stitches.config";
 
 export const Card = styled("div", {
   background: "$secondaryBackground",
+  color: "$primaryText",
   border: "1px solid $border",
   borderRadius: "12px",
   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.5)",
   overflow: "auto",
 
-  // Portrait for mobile
-  aspectRatio: "3/4",
-
   // Landscape for larger screens
-  "@tabletAndUp": {
-    aspectRatio: "5/3",
+  // maybe use percentages for width
+  aspectRatio: "6/3",
+  width: "700px",
+  // maxWidth: "600px",
+
+  "&:hover": {
+    boxShadow: "0 8px 12px rgba(0, 0, 0, 0.7)",
+    color: "$highlightText",
+    transform: "scale(1.02)",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    background: "$highlight",
+    border: "none",
   },
 
-  // maybe use percentages for width
-  minWidth: "200px",
-  maxWidth: "400px",
+  // Portrait for mobile
+  "@mobileAndDown": {
+    width: "80%",
+    aspectRatio: "3/4",
+  },
 });
