@@ -12,8 +12,8 @@ import { useSiteState } from "../context/SiteStateContext";
 
 function HomeLayout() {
   const {
-    rightAsideOpen,
-    toggleRightAside,
+    rightDrawerOpen,
+    toggleRightDrawer,
     mobileDrawerOpen,
     toggleMobileDrawer,
     darkMode,
@@ -32,18 +32,18 @@ function HomeLayout() {
           <ThemeToggle onClick={toggleDarkMode}>
             {darkMode ? <Sun /> : <Moon />}
           </ThemeToggle>
-          <AsideButton onClick={toggleRightAside}>
-            {rightAsideOpen ? <PanelRightClose /> : <PanelRightOpen />}
-          </AsideButton>
+          <DrawerButton onClick={toggleRightDrawer}>
+            {rightDrawerOpen ? <PanelRightClose /> : <PanelRightOpen />}
+          </DrawerButton>
         </DesktopHeaderButtonContainer>
       </Header>
       <Middle>
-        <Main expanded={!rightAsideOpen}>
+        <Main expanded={!rightDrawerOpen}>
           <Outlet context={{ slot: "main" }} />
         </Main>
-        <Aside open={rightAsideOpen}>
-          <Outlet context={{ slot: "aside" }} />
-        </Aside>
+        <Drawer open={rightDrawerOpen}>
+          <Outlet context={{ slot: "drawer" }} />
+        </Drawer>
       </Middle>
       <Footer>
         <CopyrightText>© 2025 Sadnan Saquif</CopyrightText>
@@ -65,7 +65,7 @@ const Container = styled("div", {
   display: "flex",
   flexDirection: "column",
   height: "100%",
-  // to prevent overflow and scroll, scroll will be inside main (& aside if ever needed)
+  // to prevent overflow and scroll, scroll will be inside main (& Drawer if ever needed)
   maxHeight: "100vh",
 
   "@supports (height: 100dvh)": {
@@ -107,7 +107,7 @@ const DesktopHeaderButtonContainer = styled("div", {
 const Middle = styled("section", {
   display: "flex",
   flexGrow: 1,
-  // so that there is no scroll when aside is closed
+  // so that there is no scroll when Drawer is closed
   "@tabletAndUp": {
     overflowX: "hidden",
   },
@@ -140,7 +140,7 @@ const Main = styled("main", {
   },
 });
 
-const AsideButton = styled("button", {
+const DrawerButton = styled("button", {
   background: "none",
   border: "none",
   fontSize: "1.5rem",
@@ -151,7 +151,7 @@ const AsideButton = styled("button", {
   },
 });
 
-const Aside = styled("aside", {
+const Drawer = styled("nav", {
   background: "$secondaryBackground",
   overflow: "hidden", // hides content when collapsed
   transition: "flex-basis 0.3s ease, opacity 0.3s ease",
@@ -175,7 +175,7 @@ const Aside = styled("aside", {
   },
 
   "@mobileAndDown": {
-    display: "none", // hide aside on mobile devices
+    display: "none", // hide Drawer on mobile devices
   },
 });
 

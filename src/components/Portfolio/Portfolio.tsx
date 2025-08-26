@@ -14,13 +14,13 @@ import { PROJECTS } from "../../data/Projects";
 
 function Portfolio() {
   const { slot } = useOutletContext<{
-    slot: "main" | "aside" | "mobileDrawer";
+    slot: "main" | "drawer" | "mobileDrawer";
   }>();
 
   return (
     <>
       {slot === "main" && <PortfolioContent />}
-      {slot === "aside" && <AsideContent />}
+      {slot === "drawer" && <DrawerContent />}
       {slot === "mobileDrawer" && <MobileDrawerContent />}
     </>
   );
@@ -42,7 +42,7 @@ function PortfolioContent() {
   );
 }
 
-function AsideContent() {
+function DrawerContent() {
   return (
     <div>
       <NavItem>About</NavItem>
