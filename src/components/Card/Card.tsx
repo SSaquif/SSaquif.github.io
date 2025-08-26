@@ -1,4 +1,4 @@
-import { styled } from "../stitches.config";
+import { styled } from "../../stitches.config";
 
 export const Card = styled("div", {
   background: "$secondaryBackground",
@@ -11,7 +11,7 @@ export const Card = styled("div", {
   // Landscape for larger screens
   // maybe use percentages for width
   aspectRatio: "6/3",
-  width: "700px",
+  width: "800px",
   // maxWidth: "600px",
 
   "&:hover": {
@@ -25,7 +25,7 @@ export const Card = styled("div", {
 
   // Portrait for mobile
   "@mobileAndDown": {
-    width: "80%",
+    width: "90%",
     aspectRatio: "3/4",
   },
 });
