@@ -7,7 +7,7 @@ import {
   StyledSquareX as SquareX,
   StyledSun as Sun,
   StyledMoon as Moon,
-} from "../components/Icons";
+} from "../components/Icons/Icons";
 import { useSiteState } from "../context/SiteStateContext";
 
 function HomeLayout() {

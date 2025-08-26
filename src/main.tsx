@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { SiteStateProvider } from "./context/SiteStateContext";
 import HomeLayout from "./routes/HomeLayout.tsx";
-import Portfolio from "./components/Portfolio.tsx";
+import Portfolio from "./components/Portfolio/Portfolio.tsx";
 import Notfound from "./routes/NotFound.tsx";
 
 const router = createBrowserRouter([
