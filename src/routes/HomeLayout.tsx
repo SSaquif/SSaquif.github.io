@@ -240,6 +240,7 @@ const NavDrawer = styled("nav", {
   transform: "translateX(100%)",
   transition: "transform 0.3s ease, border 0.3s ease",
   padding: "1rem",
+  zIndex: 1000, // ensure it overlays other content
 
   variants: {
     open: {
