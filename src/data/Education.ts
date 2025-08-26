@@ -1,6 +1,7 @@
-type Education = {
+export type Education = {
   degree: string;
   institution: string;
+  logo?: string;
   location: string;
   startDate: string; // YYYY-MM format
   endDate: string; // YYYY-MM format
@@ -12,6 +13,7 @@ export const EDUCATION: Education[] = [
   {
     degree: "Bachelor of Software Engineering",
     institution: "McGill University",
+    logo: "/logos/mcgill-university-coa.png",
     location: "Montreal, QC",
     startDate: "2013-01",
     endDate: "2019-05",

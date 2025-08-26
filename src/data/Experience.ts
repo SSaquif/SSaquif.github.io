@@ -1,6 +1,7 @@
-type Positions = {
+export type Positions = {
   title: string;
   company: string;
+  logo: string;
   location: string;
   startDate: string;
   endDate: string | null;
@@ -14,6 +15,7 @@ export const PROFESSIONAL_EXPERIENCES: Positions[] = [
   {
     title: "Software Developer",
     company: "Vention",
+    logo: "/logos/vention-logo.jpg",
     location: "Montreal, QC",
     startDate: "2022-02",
     endDate: "2023-10",
@@ -42,6 +44,7 @@ export const PROFESSIONAL_EXPERIENCES: Positions[] = [
   {
     title: "Instructor",
     company: "Concordia Bootcamps",
+    logo: "/logos/concordia-bootcamps-logo.png",
     location: "Montreal, QC",
     startDate: "2019-12",
     endDate: "2022-02",

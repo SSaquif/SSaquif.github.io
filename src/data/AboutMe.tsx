@@ -1,6 +1,6 @@
 import { Globe } from "lucide-react";
 import type { ReactElement } from "react";
-import { GithubIcon, LinkedInIcon } from "../components/BrandIcons";
+import { GithubIcon, LinkedInIcon } from "../components/Icons/BrandIcons";
 
 export type Contact = {
   emails: string[];

@@ -1,9 +1,11 @@
-type Publication = {
+export type Publication = {
   title: string;
   authors: string[];
   year: number;
   conference?: string;
-  url?: string;
+  journal?: string;
+  abstract?: string;
+  link?: string;
 };
 
 export const PUBLICATIONS: Publication[] = [
@@ -13,6 +15,6 @@ export const PUBLICATIONS: Publication[] = [
     authors: ["Sadnan Saquif", "Team Members (Capstone Project)"],
     year: 2018,
     conference: "Mining Software Repositories (MSR) Conference",
-    url: "https://rebels.cs.uwaterloo.ca/shortconfpaper/2018/05/27/revisiting-programmers-build-errors-in-the-visual-studio-context.html",
+    link: "https://rebels.cs.uwaterloo.ca/shortconfpaper/2018/05/27/revisiting-programmers-build-errors-in-the-visual-studio-context.html",
   },
 ];

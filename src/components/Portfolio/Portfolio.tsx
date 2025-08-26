@@ -1,13 +1,21 @@
 import { useOutletContext } from "react-router-dom";
-import { styled } from "../stitches.config";
-import { Card } from "./Card";
-import { NavItem } from "./Navitem";
+import { styled } from "../../stitches.config";
+import { NavItem } from "../Navitem";
+import { ABOUT_ME } from "../../data/AboutMe";
+import { AboutMeSection } from "./AboutMeSection";
+import { ExperienceSection } from "./ExperienceSection";
+import { EducationSection } from "./EducationSection";
+import { PublicationSection } from "./PublicationSection";
+import { ProjectSection } from "./ProjectSection";
+import { PROFESSIONAL_EXPERIENCES } from "../../data/Experience";
+import { EDUCATION } from "../../data/Education";
+import { PUBLICATIONS } from "../../data/Publication";
+import { PROJECTS } from "../../data/Projects";
 
 function Portfolio() {
   const { slot } = useOutletContext<{
     slot: "main" | "aside" | "mobileDrawer";
   }>();
-  console.log("Current slot:", slot);
 
   return (
     <>
@@ -21,25 +29,15 @@ function Portfolio() {
 function PortfolioContent() {
   return (
     <Container>
-      <Card>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-        in
-      </Card>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <AboutMeSection data={ABOUT_ME} />
+      <h1>Experience</h1>
+      <ExperienceSection data={PROFESSIONAL_EXPERIENCES} />
+      <h1>Education</h1>
+      <EducationSection data={EDUCATION} />
+      <h1>Publication</h1>
+      <PublicationSection data={PUBLICATIONS} />
+      <h1>Projects</h1>
+      <ProjectSection data={PROJECTS} />
     </Container>
   );
 }
