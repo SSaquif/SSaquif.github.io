@@ -1,3 +1,7 @@
+import { Globe } from "lucide-react";
+import type { ReactElement } from "react";
+import { GithubIcon, LinkedInIcon } from "../components/BrandIcons";
+
 export type Contact = {
   emails: string[];
   phone: { country: string; number: string }[];
@@ -5,7 +9,7 @@ export type Contact = {
 
 export type Social = {
   url: string;
-  icon: string; // icon name from lucide-react or other icon library
+  icon: ReactElement;
 };
 
 export type AboutMe = {
@@ -15,40 +19,36 @@ export type AboutMe = {
   socials: {
     [key: string]: Social;
   };
-  description: string[];
+  description: string;
   qualificationSummary: string[];
 };
 
 export const ABOUT_ME: AboutMe = {
   name: "Sadnan Saquif",
-  title: "Software Developer | Full-Stack Developer",
+  title: "Full Stack Software Developer",
   contacts: [
     {
       emails: ["sadnan.saquif@mail.mcgill.ca", "ssaquif@gmail.com"],
-      phone: [{ country: "CA", number: "+1 (514) 710-7065" }],
+      phone: [{ country: "CA", number: "(514) 268-7441" }],
     },
   ],
   socials: {
     github: {
       url: "https://github.com/SSaquif",
-      icon: "github",
+      icon: <GithubIcon />,
     },
     linkedIn: {
       url: "https://www.linkedin.com/in/ssaquif",
-      icon: "linkedin",
+      icon: <LinkedInIcon />,
     },
     website: {
       url: "https://ssaquif.github.io",
-      icon: "globe",
+      icon: <Globe />,
     },
   },
-  description: [
-    "Full-Stack Developer with over 4 years of experience building and maintaining enterprise applications and internal tools.",
-    "Skilled in modern web and mobile frameworks with a strong foundation in software engineering from McGill University.",
-    "Experienced in designing scalable solutions, optimizing system performance, and contributing to research at an international level.",
-    "Passionate about teaching, mentorship, and creating efficient, user-friendly software products.",
-    "Fluent in English and Bengali, with additional knowledge of French, Hindi, and Urdu.",
-  ],
+  description:
+    "Full-Stack Developer with over 4 years of experience building and maintaining enterprise applications and internal tools. Skilled in modern web and mobile frameworks with a strong foundation in software engineering from McGill University. Experienced in designing scalable solutions, optimizing system performance, and contributing to research at an international level. Passionate about teaching, mentorship, and creating efficient, user-friendly software products. Fluent in English and Bengali, with additional knowledge of French, Hindi, and Urdu. ",
+
   qualificationSummary: [
     "4+ years of full-stack development experience focusing on enterprise and internal systems.",
     "Bachelor’s degree in Software Engineering from McGill University.",
