@@ -29,7 +29,7 @@ export const ABOUT_ME: AboutMe = {
   contacts: [
     {
       emails: ["sadnan.saquif@mail.mcgill.ca", "ssaquif@gmail.com"],
-      phone: [{ country: "CA", number: "(514) 268-7441" }],
+      phone: [{ country: "CA", number: "+1 (514) 268-7441" }],
     },
   ],
   socials: {

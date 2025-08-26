@@ -1,3 +1,4 @@
+import { CheckCheck } from "lucide-react";
 import type { Positions } from "../../data/Experience";
 import { styled } from "../../stitches.config";
 import { InfoCard } from "../Card/InfoCard";
@@ -11,6 +12,7 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
     <Container>
       {data.map((position, index) => (
         <InfoCard
+          withLogo={true}
           logo={position.logo}
           logoAlt={`${position.company} logo`}
           key={index}
@@ -26,8 +28,20 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
             <PositionDetails>
               <p>{position.jobDescription}</p>
               <ul>
-                {position.responsibilities.map((item, idx) => (
-                  <li key={idx}>{item}</li>
+                {position.responsibilities.map((item, index) => (
+                  <li
+                    key={index}
+                    style={{
+                      lineHeight: "1.25",
+                      display: "grid",
+                      gridTemplateColumns: "auto 1fr",
+                      gap: "0.75rem",
+                      alignItems: "center",
+                    }}
+                  >
+                    <CheckCheck size={20} />
+                    {item}
+                  </li>
                 ))}
               </ul>
               <p>

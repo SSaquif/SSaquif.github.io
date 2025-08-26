@@ -1,8 +1,8 @@
+import Emoji from "a11y-react-emoji";
+import { Star, Sparkles } from "lucide-react";
 import { Phone, Mail } from "lucide-react";
 import type { AboutMe } from "../../data/AboutMe";
-import { Card } from "../Card/Card";
 import { styled } from "../../stitches.config";
-import Emoji from "a11y-react-emoji";
 
 interface AboutMeCardProps {
   data: AboutMe;
@@ -61,24 +61,35 @@ export function AboutMeSection({ data }: AboutMeCardProps) {
           </ContactItemColumn>
         </ContactsContainer>
       </GeneralInfoContainer>
-      <Card>
+      <DescriptionContainer>
         <p>{data.description}</p>
-      </Card>
-      <Card>
+        {/* </Card> */}
+        {/* <Card> */}
         <ul>
           {data.qualificationSummary.map((item, index) => (
-            <li key={index}>{item}</li>
+            //@TODO: Figure out why only inline style works here with <li/> and contents
+            <li
+              key={index}
+              style={{
+                lineHeight: "1.25",
+                display: "grid",
+                gridTemplateColumns: "auto 1fr",
+                gap: "0.75rem",
+                alignItems: "center",
+              }}
+            >
+              <Star size={20} />
+              {item}
+            </li>
           ))}
         </ul>
-      </Card>
-
-      {/* Render other parts of the AboutMe data as needed */}
+      </DescriptionContainer>
     </Container>
   );
 }
 
 const Container = styled("div", {
-  border: "1px solid red",
+  // border: "1px solid red",
   color: "$primaryText",
 });
 
@@ -89,7 +100,7 @@ const GeneralInfoContainer = styled("section", {
   alignItems: "center",
   textAlign: "center",
   gap: "0.5rem",
-  border: "1px solid hotpink",
+  // border: "1px solid hotpink",
 });
 
 // 2 rows and 2 columns grid
@@ -116,8 +127,8 @@ const ContactHeaderColumn = styled("div", {
 
   "@mobileAndDown": {
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
     gap: "0.1rem",
   },
 });
@@ -128,14 +139,14 @@ const ContactItemColumn = styled("ul", {
   margin: 0,
   display: "flex",
   flexDirection: "column",
-  alignItems: "flex-start",
+  alignItems: "center",
   justifyContent: "center",
   // border: "1px solid $border",
 
   "@mobileAndDown": {
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-start",
+    // alignItems: "flex-start",
     padding: "0 0.5rem",
     justifyContent: "center",
     // gap: "2px",
@@ -148,4 +159,31 @@ const SocialsContainer = styled("ul", {
   flexDirection: "row",
   gap: "1rem",
   padding: 0,
+});
+
+const DescriptionContainer = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  width: "100%",
+  // border: "1px solid $border",
+  maxWidth: "600px", // Match InfoCard width
+  margin: "0 auto",
+  textAlign: "center",
+  gap: "10px",
+  ul: {
+    listStyle: "none",
+    padding: 0,
+    margin: 0,
+    textAlign: "justify",
+    width: "100%",
+  },
+  li: {
+    marginBottom: "0.5em",
+    fontSize: "1rem",
+    display: "flex",
+    alignItems: "center",
+    lineHeight: "1.5",
+    minHeight: "24px",
+  },
 });

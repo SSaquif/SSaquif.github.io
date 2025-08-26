@@ -11,6 +11,7 @@ export function EducationSection({ data }: EducationSectionProps) {
     <Container>
       {data.map((edu, index) => (
         <InfoCard
+          withLogo={true}
           key={index}
           logo={edu.logo}
           logoAlt={`${edu.institution} logo`}

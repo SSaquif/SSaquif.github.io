@@ -9,7 +9,7 @@ export function ProjectSection({ data }: ProjectSectionProps) {
   return (
     <Container>
       {data.map((project, index) => (
-        <InfoCard key={index}>
+        <InfoCard key={index} withLogo={false}>
           <InfoContainer>
             <h2>{project.name}</h2>
             <p>{project.description}</p>

@@ -10,7 +10,7 @@ export function PublicationSection({ data }: PublicationSectionProps) {
   return (
     <Container>
       {data.map((pub, index) => (
-        <InfoCard key={index}>
+        <InfoCard key={index} withLogo={false}>
           <InfoContainer>
             <h2>{pub.title}</h2>
             <h3>{pub.authors.join(", ")}</h3>

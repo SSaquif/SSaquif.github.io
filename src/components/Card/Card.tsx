@@ -3,7 +3,6 @@ import { styled } from "../../stitches.config";
 export const Card = styled("div", {
   background: "$secondaryBackground",
   color: "$primaryText",
-  border: "1px solid $border",
   borderRadius: "12px",
   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.5)",
   overflow: "auto",
@@ -12,7 +11,6 @@ export const Card = styled("div", {
   // maybe use percentages for width
   aspectRatio: "6/3",
   width: "800px",
-  // maxWidth: "600px",
 
   "&:hover": {
     boxShadow: "0 8px 12px rgba(0, 0, 0, 0.7)",
@@ -26,6 +24,6 @@ export const Card = styled("div", {
   // Portrait for mobile
   "@mobileAndDown": {
     width: "90%",
-    aspectRatio: "3/4",
+    aspectRatio: "3/5",
   },
 });

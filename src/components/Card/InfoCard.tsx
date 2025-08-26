@@ -2,15 +2,28 @@ import { styled } from "../../stitches.config";
 import { Card } from "./Card";
 import type { ReactNode } from "react";
 
-interface InfoCardProps {
-  logo?: string;
-  logoAlt?: string;
-  children: ReactNode;
-}
+// Todo: Probably possible to make it a Discriminated Union type
+// if withLogo is true, logo must be provided
+type InfoCardProps =
+  | {
+      withLogo: true;
+      logo?: string;
+      logoAlt: string;
+      children?: ReactNode;
+    }
+  | {
+      withLogo: false;
+      logo?: null;
+      logoAlt?: null;
+      children?: ReactNode;
+    };
 
-export function InfoCard({ logo, logoAlt, children }: InfoCardProps) {
+export function InfoCard(props: InfoCardProps) {
+  const { withLogo = false, children, logo, logoAlt } = props;
+
+  const variant = withLogo ? "withLogo" : "withoutLogo";
   return (
-    <StyledInfoCard>
+    <StyledInfoCard variant={variant}>
       {logo && (
         <LogoContainer>
           <img src={logo} alt={logoAlt || "logo"} />
@@ -23,19 +36,31 @@ export function InfoCard({ logo, logoAlt, children }: InfoCardProps) {
 
 const StyledInfoCard = styled(Card, {
   overflow: "visible",
-  marginTop: "60px",
   position: "relative",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   gap: "20px",
-  padding: "50px 30px 40px 30px",
-
-  "@mobileAndDown": {
-    flexDirection: "column",
-    width: "90%",
-    textAlign: "center",
-    padding: "60px 10px 30px 10px",
+  variants: {
+    variant: {
+      withLogo: {
+        marginTop: "60px",
+        padding: "50px 30px 40px 30px",
+        "@mobileAndDown": {
+          padding: "60px 10px 30px 10px",
+        },
+      },
+      withoutLogo: {
+        marginTop: "20px",
+        padding: "30px 20px 30px 20px",
+        "@mobileAndDown": {
+          padding: "30px 5px 20px 5px",
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "withLogo",
   },
 });
 
