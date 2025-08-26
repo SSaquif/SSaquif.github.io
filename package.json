@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@stitches/react": "^1.2.8",
+    "a11y-react-emoji": "^1.2.0",
     "lucide-react": "^0.540.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
