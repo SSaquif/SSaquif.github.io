@@ -8,9 +8,15 @@ import {
   Moon,
 } from "lucide-react";
 
+// Todo: look into over possible lucide-react icon props
+interface IconProps {
+  size?: number;
+  color?: string;
+}
+
 const Icon = styled("span", {
   color: "$border",
-  opacity: 0.7,
+  opacity: 0.6,
   "&:hover": {
     opacity: 1,
   },
@@ -19,50 +25,50 @@ const Icon = styled("span", {
   },
 });
 
-export function StyledPanelRightOpen() {
+export function StyledPanelRightOpen({ size, color }: IconProps) {
   return (
     <Icon>
-      <PanelRightOpen />
+      <PanelRightOpen size={size} color={color} />
     </Icon>
   );
 }
 
-export function StyledPanelRightClose() {
+export function StyledPanelRightClose({ size, color }: IconProps) {
   return (
     <Icon>
-      <PanelRightClose />
+      <PanelRightClose size={size} color={color} />
     </Icon>
   );
 }
 
-export function StyledSquareMenu() {
+export function StyledSquareMenu({ size, color }: IconProps) {
   return (
     <Icon>
-      <SquareMenu />
+      <SquareMenu size={size} color={color} />
     </Icon>
   );
 }
 
-export function StyledSquareX() {
+export function StyledSquareX({ size, color }: IconProps) {
   return (
     <Icon>
-      <SquareX />
+      <SquareX size={size} color={color} />
     </Icon>
   );
 }
 
-export function StyledSun() {
+export function StyledSun({ size, color }: IconProps) {
   return (
     <Icon>
-      <Sun />
+      <Sun size={size} color={color} />
     </Icon>
   );
 }
 
-export function StyledMoon() {
+export function StyledMoon({ size, color }: IconProps) {
   return (
     <Icon>
-      <Moon />
+      <Moon size={size} color={color} />
     </Icon>
   );
 }

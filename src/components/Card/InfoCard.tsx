@@ -47,14 +47,14 @@ const StyledInfoCard = styled(Card, {
         marginTop: "60px",
         padding: "50px 30px 40px 30px",
         "@mobileAndDown": {
-          padding: "60px 10px 30px 10px",
+          padding: "40px 10px",
         },
       },
       withoutLogo: {
         marginTop: "20px",
         padding: "30px 20px 30px 20px",
         "@mobileAndDown": {
-          padding: "30px 5px 20px 5px",
+          padding: "20px 10px",
         },
       },
     },
@@ -93,6 +93,5 @@ const LogoContainer = styled("div", {
 
 const CardContent = styled("div", {
   width: "100%",
-  maxHeight: "350px",
   overflowY: "auto",
 });

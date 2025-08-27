@@ -1,5 +1,6 @@
 import * as RadixTooltip from "@radix-ui/react-tooltip";
-import { styled } from "../stitches.config";
+import { styled, darkTheme } from "../stitches.config";
+import { useSiteState } from "../context/SiteStateContext";
 
 export function Tooltip({
   content,
@@ -8,14 +9,18 @@ export function Tooltip({
   content: string;
   children: React.ReactNode;
 }) {
+  const { darkMode } = useSiteState();
+
   return (
     <RadixTooltip.Provider>
       <RadixTooltip.Root>
         <StyledTooltipTrigger>{children}</StyledTooltipTrigger>
         <RadixTooltip.Portal>
-          <StyledTooltipContent>
+          <StyledTooltipContent className={darkMode ? darkTheme.className : ""}>
             {content}
-            <StyledTooltipArrow />
+            <StyledTooltipArrow
+              className={darkMode ? darkTheme.className : ""}
+            />
           </StyledTooltipContent>
         </RadixTooltip.Portal>
       </RadixTooltip.Root>
@@ -38,6 +43,6 @@ const StyledTooltipContent = styled(RadixTooltip.Content, {
 });
 
 const StyledTooltipArrow = styled(RadixTooltip.Arrow, {
-  fill: "$secondaryBackground",
+  fill: "$border",
   stroke: "$border",
 });

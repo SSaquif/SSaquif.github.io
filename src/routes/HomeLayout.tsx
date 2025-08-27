@@ -35,22 +35,22 @@ function HomeLayout() {
             <ThemeToggle onClick={toggleDarkMode}>
               {darkMode ? (
                 <Tooltip content="Light Mode">
-                  <Sun />
+                  <Sun size={32} />
                 </Tooltip>
               ) : (
                 <Tooltip content="Dark Mode">
-                  <Moon />
+                  <Moon size={32} />
                 </Tooltip>
               )}
             </ThemeToggle>
             <DrawerButton onClick={toggleRightDrawer}>
               {rightDrawerOpen ? (
                 <Tooltip content="Close Panel">
-                  <PanelRightClose />
+                  <PanelRightClose size={32} />
                 </Tooltip>
               ) : (
                 <Tooltip content="Open Panel">
-                  <PanelRightOpen />
+                  <PanelRightOpen size={32} />
                 </Tooltip>
               )}
             </DrawerButton>
@@ -127,6 +127,7 @@ const DesktopHeaderButtonContainer = styled("div", {
   display: "flex",
   alignItems: "center",
   gap: "0.5rem",
+  padding: "0.25rem 0.5rem 0 0",
 
   "@mobileAndDown": {
     display: "none", // hide container on mobile devices
