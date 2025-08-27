@@ -2,6 +2,9 @@ import type { Project } from "../../data/Projects";
 import { InfoCard } from "../Card/InfoCard";
 import { styled } from "../../stitches.config";
 import { Chip } from "../Chip";
+import { GithubIcon } from "../Icons/BrandIcons";
+import { Tooltip } from "../Tooltip";
+import { Globe } from "lucide-react";
 
 interface ProjectSectionProps {
   data: Project[];
@@ -14,26 +17,23 @@ export function ProjectSection({ data }: ProjectSectionProps) {
           <CardContent>
             <ProjectInfo>
               <h2>{project.name}</h2>
-              <span>
+              <LinkContainer>
+                <h3>Links</h3>
                 {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Project
-                  </a>
+                  <Tooltip content={`Visit Site: ${project.link}`}>
+                    <SiteLink href={project.link} target="_blank">
+                      <Globe />
+                    </SiteLink>
+                  </Tooltip>
                 )}
                 {project.repo && (
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Repository
-                  </a>
+                  <Tooltip content={`View Code: ${project.repo}`}>
+                    <SiteLink href={project.repo} target="_blank">
+                      <GithubIcon />
+                    </SiteLink>
+                  </Tooltip>
                 )}
-              </span>
+              </LinkContainer>
             </ProjectInfo>
             <ProjectDetails>
               <TechChipsContainer>
@@ -41,7 +41,6 @@ export function ProjectSection({ data }: ProjectSectionProps) {
                   return <Chip key={tech}>{tech}</Chip>;
                 })}
               </TechChipsContainer>
-              {/* </TechContainer> */}
               <DescriptionContainer>{project.description}</DescriptionContainer>
             </ProjectDetails>
           </CardContent>
@@ -94,6 +93,34 @@ const ProjectInfo = styled("div", {
 
   "@mobileAndDown": {
     paddingTop: "0",
+  },
+});
+
+const LinkContainer = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
+  marginTop: "4px",
+  svg: {
+    stroke: "currentColor",
+  },
+  "@mobileAndDown": {
+    gap: "4px",
+  },
+});
+
+const SiteLink = styled("a", {
+  color: "$secondaryText",
+  textDecoration: "none",
+  opacity: 0.8,
+  "&:hover": {
+    opacity: 1,
+  },
+  "&:visited": {
+    color: "$secondaryText",
+  },
+  "@mobileAndDown": {
+    opacity: 1,
   },
 });
 

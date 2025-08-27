@@ -19,11 +19,7 @@ export function IntroSection({ data }: IntroProps) {
           Object.entries(data.socials).map(([key, social]) => (
             <li key={key}>
               <Tooltip content={social.url}>
-                <SocialsLink
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <SocialsLink href={social.url} target="_blank">
                   {social.icon}
                 </SocialsLink>
               </Tooltip>

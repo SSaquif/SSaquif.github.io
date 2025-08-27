@@ -2,6 +2,8 @@ import type { Publication } from "../../data/Publication";
 import { InfoCard } from "../Card/InfoCard";
 import { styled } from "../../stitches.config";
 import { Chip } from "../Chip";
+import { ExternalLink } from "lucide-react";
+import { Tooltip } from "../Tooltip";
 
 interface PublicationSectionProps {
   data: Publication[];
@@ -15,14 +17,19 @@ export function PublicationSection({ data }: PublicationSectionProps) {
           <CardContent>
             <PublicationInfo>
               <h2>{pub.title}</h2>
-              {/* <h3>{pub.authors.join(", ")}</h3> */}
-              <p>
-                {/* <em>{pub.?journal}</em>,  */}
+              <h3>
                 {pub.year} {pub.conference}
-              </p>
-              <a href={pub.link} target="_blank" rel="noopener noreferrer">
-                Read More
-              </a>
+              </h3>
+              <Tooltip content={pub.link || "Visit Publication"}>
+                <SiteLink href={pub.link} target="_blank">
+                  <span>
+                    <LinkContainer>
+                      <p>Read More</p>
+                      <ExternalLink />
+                    </LinkContainer>
+                  </span>
+                </SiteLink>
+              </Tooltip>
             </PublicationInfo>
             <PublicationDetails>
               <TechChipsContainer>
@@ -30,7 +37,6 @@ export function PublicationSection({ data }: PublicationSectionProps) {
                   return <Chip key={tech}>{tech}</Chip>;
                 })}
               </TechChipsContainer>
-              {/* </TechContainer> */}
               <DescriptionContainer>{pub.description}</DescriptionContainer>
               <AbstractContainer>
                 <strong>Abstract</strong>
@@ -81,13 +87,34 @@ const PublicationInfo = styled("div", {
 
   h3: {
     margin: 0,
-    fontSize: "1.2rem",
+    fontSize: "1rem",
     color: "$secondaryText",
   },
 
   "@mobileAndDown": {
     paddingTop: "0",
   },
+});
+
+const SiteLink = styled("a", {
+  color: "$secondaryText",
+  textDecoration: "none",
+  opacity: 0.8,
+  "&:hover": {
+    opacity: 1,
+  },
+  "&:visited": {
+    color: "$secondaryText",
+  },
+  "@mobileAndDown": {
+    opacity: 1,
+  },
+});
+
+const LinkContainer = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  gap: "4px",
 });
 
 const PublicationDetails = styled("div", {

@@ -3,6 +3,7 @@ import type { Positions } from "../../data/Experience";
 import { styled } from "../../stitches.config";
 import { InfoCard } from "../Card/InfoCard";
 import { Chip } from "../Chip";
+import { Tooltip } from "../Tooltip";
 
 interface ExperienceSectionProps {
   data: Positions[];
@@ -21,10 +22,14 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
           <CardContent>
             <PositionInfo>
               <h2>{position.title}</h2>
-              <CompanyTitle>
-                <h3>{position.company}</h3>
-                <ExternalLink />
-              </CompanyTitle>
+              <Tooltip content={position.companyWebsite}>
+                <SiteLink href={position.companyWebsite} target="_blank">
+                  <CompanyTitle>
+                    <h3>{position.company}</h3>
+                    <ExternalLink />
+                  </CompanyTitle>
+                </SiteLink>
+              </Tooltip>
               <DesktopDateAndLocation>
                 {position.startDate} - {position.endDate} | {position.location}
               </DesktopDateAndLocation>
@@ -40,7 +45,6 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
                   return <Chip key={tech}>{tech}</Chip>;
                 })}
               </TechChipsContainer>
-              {/* </TechContainer> */}
               <DescriptionContainer>
                 {position.jobDescription}
               </DescriptionContainer>
@@ -119,6 +123,21 @@ const CompanyTitle = styled("div", {
   display: "flex",
   alignItems: "center",
   gap: "8px",
+});
+
+const SiteLink = styled("a", {
+  color: "$secondaryText",
+  textDecoration: "none",
+  opacity: 0.8,
+  "&:hover": {
+    opacity: 1,
+  },
+  "&:visited": {
+    color: "$secondaryText",
+  },
+  "@mobileAndDown": {
+    opacity: 1,
+  },
 });
 
 const DesktopDateAndLocation = styled("p", {
