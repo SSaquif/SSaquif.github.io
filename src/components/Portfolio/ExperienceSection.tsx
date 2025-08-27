@@ -2,6 +2,7 @@ import { CheckCheck } from "lucide-react";
 import type { Positions } from "../../data/Experience";
 import { styled } from "../../stitches.config";
 import { InfoCard } from "../Card/InfoCard";
+import { Chip } from "../Chip";
 
 interface ExperienceSectionProps {
   data: Positions[];
@@ -46,7 +47,9 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
               </ul>
               <p>
                 <strong>Technologies:</strong>{" "}
-                {position.technologies.join(", ")}
+                {position.technologies.map((tech) => {
+                  return <Chip key={tech}>{tech}</Chip>;
+                })}
               </p>
             </PositionDetails>
           </CardContent>

@@ -33,7 +33,7 @@ const StyledTooltipContent = styled(Tooltip.Content, {
   color: "$primaryText",
   padding: "10px 15px",
   borderRadius: "5px",
-  //   zIndex: "2",
+  zIndex: "$tooltip",
   border: "1px solid $border",
 });
 
