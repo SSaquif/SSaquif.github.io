@@ -63,12 +63,5 @@ export const { styled, css, keyframes, theme } = createStitches({
       accent: "hsl(349, 84%, 60%)",
       accentText: "hsl(60, 100%, 100%)",
     },
-
-    zIndices: {
-      base: 0,
-      dropdown: 1000,
-      modal: 2000,
-      tooltip: 3000,
-    },
   },
 });
