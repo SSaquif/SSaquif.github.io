@@ -1,4 +1,4 @@
-import { CheckCheck } from "lucide-react";
+import { CheckCheck, ExternalLink } from "lucide-react";
 import type { Positions } from "../../data/Experience";
 import { styled } from "../../stitches.config";
 import { InfoCard } from "../Card/InfoCard";
@@ -21,14 +21,32 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
           <CardContent>
             <PositionInfo>
               <h2>{position.title}</h2>
-              <h3>{position.company}</h3>
-              <p>
+              <CompanyTitle>
+                <h3>{position.company}</h3>
+                <ExternalLink />
+              </CompanyTitle>
+              <DesktopDateAndLocation>
+                {position.startDate} - {position.endDate} | {position.location}
+              </DesktopDateAndLocation>
+              <MobileDateAndLocation>
                 {position.startDate} - {position.endDate}
-              </p>
+                <br />
+                {position.location}
+              </MobileDateAndLocation>
             </PositionInfo>
             <PositionDetails>
-              <p>{position.jobDescription}</p>
-              <ul>
+              {/* <TechContainer> */}
+              {/* <strong>Tech Stack</strong>{" "} */}
+              <TechChipsContainer>
+                {position.technologies.map((tech) => {
+                  return <Chip key={tech}>{tech}</Chip>;
+                })}
+              </TechChipsContainer>
+              {/* </TechContainer> */}
+              <DescriptionContainer>
+                {position.jobDescription}
+              </DescriptionContainer>
+              <ResponsibilitiesContainer>
                 {position.responsibilities.map((item, index) => (
                   <li
                     key={index}
@@ -44,13 +62,7 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
                     {item}
                   </li>
                 ))}
-              </ul>
-              <p>
-                <strong>Technologies:</strong>{" "}
-                {position.technologies.map((tech) => {
-                  return <Chip key={tech}>{tech}</Chip>;
-                })}
-              </p>
+              </ResponsibilitiesContainer>
             </PositionDetails>
           </CardContent>
         </InfoCard>
@@ -67,11 +79,17 @@ const Container = styled("div", {
   width: "100%",
 });
 
+// TODO: Figure out a better way to handle max height
+// so that sizes are consistent across different cards
+// right now they mostly are
 const CardContent = styled("div", {
   width: "100%",
-  maxHeight: "350px", // Set your desired height
+  maxHeight: "340px",
   overflowY: "auto", // Enable vertical scrolling
-  //   paddingRight: "10px", // Optional: for scrollbar space
+  paddingRight: "10px", // Optional: for scrollbar space
+  "@mobileAndDown": {
+    maxHeight: "400px",
+  },
 });
 
 const PositionInfo = styled("div", {
@@ -80,7 +98,7 @@ const PositionInfo = styled("div", {
   display: "flex",
   alignItems: "center",
   flexDirection: "column",
-  gap: "0",
+  paddingTop: "8px",
   borderBottom: "0.2rem solid $border",
 
   h2: {
@@ -93,6 +111,67 @@ const PositionInfo = styled("div", {
     fontSize: "1.2rem",
     color: "$secondaryText",
   },
+
+  "@mobileAndDown": {
+    paddingTop: "0",
+  },
 });
 
-const PositionDetails = styled("div", {});
+const CompanyTitle = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
+});
+
+const DesktopDateAndLocation = styled("p", {
+  "@mobileAndDown": {
+    display: "none",
+  },
+});
+
+const MobileDateAndLocation = styled("div", {
+  display: "none",
+  "@mobileAndDown": {
+    display: "block",
+  },
+});
+
+const PositionDetails = styled("div", {
+  paddingTop: "8px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "8px",
+});
+
+const TechContainer = styled("div", {
+  display: "grid",
+  gridTemplateColumns: "15% 80%",
+  padding: "0 8px",
+  "@mobileAndDown": {
+    gap: "6px",
+  },
+});
+
+const TechChipsContainer = styled("div", {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "4px",
+  alignItems: "center",
+  justifyContent: "center",
+});
+
+const DescriptionContainer = styled("div", {
+  textAlign: "center",
+});
+
+const ResponsibilitiesContainer = styled("ul", {
+  listStyle: "none",
+  padding: "0 8px",
+  "@mobileAndDown": {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    // border: "solid hotpink",
+    padding: "0 8px",
+  },
+});

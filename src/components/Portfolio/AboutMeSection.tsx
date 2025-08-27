@@ -33,15 +33,14 @@ export function AboutMeSection({ data }: AboutMeCardProps) {
 }
 
 const Container = styled("div", {
+  width: "100%",
+  maxWidth: "600px", // Match InfoCard width
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  width: "100%",
-  // border: "1px solid $border",
-  maxWidth: "600px", // Match InfoCard width
+  gap: "10px",
   margin: "0 auto",
   textAlign: "center",
-  gap: "10px",
   ul: {
     listStyle: "none",
     padding: 0,
@@ -56,5 +55,13 @@ const Container = styled("div", {
     alignItems: "center",
     lineHeight: "1.5",
     minHeight: "24px",
+  },
+  "@mobileAndDown": {
+    ul: {
+      textAlign: "center",
+      display: "flex",
+      flexDirection: "column",
+      gap: "2px",
+    },
   },
 });

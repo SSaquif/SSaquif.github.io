@@ -55,21 +55,23 @@ function PortfolioContent({ refs }: { refs: PortfolioNavigationRefs }) {
   } = refs;
   return (
     <Container>
-      <div ref={introRef}>
-        <IntroSection data={ABOUT_ME} />
-      </div>
-      <div ref={aboutRef}>
-        <h1 style={{ textAlign: "center" }}>
-          Hi
-          <Emoji
-            symbol="👋"
-            label="waving-hand"
-            style={{
-              verticalAlign: "7%",
-            }}
-          />
-        </h1>
-        <AboutMeSection data={ABOUT_ME} />
+      <div>
+        <div ref={introRef}>
+          <IntroSection data={ABOUT_ME} />
+        </div>
+        <div ref={aboutRef}>
+          <h1 style={{ textAlign: "center" }}>
+            Hi
+            <Emoji
+              symbol="👋"
+              label="waving-hand"
+              style={{
+                verticalAlign: "7%",
+              }}
+            />
+          </h1>
+          <AboutMeSection data={ABOUT_ME} />
+        </div>
       </div>
 
       <div ref={experienceRef}>
@@ -157,7 +159,11 @@ const Container = styled("div", {
   justifyContent: "center",
   alignItems: "center",
   padding: "2rem",
-  gap: "1rem",
+  gap: "1.5rem",
+
+  "@mobileAndDown": {
+    gap: "1rem",
+  },
 });
 
 export default Portfolio;

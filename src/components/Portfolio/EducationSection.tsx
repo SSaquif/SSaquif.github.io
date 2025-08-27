@@ -16,14 +16,23 @@ export function EducationSection({ data }: EducationSectionProps) {
           logo={edu.logo}
           logoAlt={`${edu.institution} logo`}
         >
-          <InfoContainer>
-            <h2>{edu.degree}</h2>
-            <h3>{edu.institution}</h3>
-            <p>
-              {edu.startDate} - {edu.endDate}
-            </p>
-            <p>{edu.location}</p>
-          </InfoContainer>
+          <CardContent>
+            <EducationInfo>
+              <h2>{edu.degree}</h2>
+              <h3>{edu.institution}</h3>
+              <DesktopDateAndLocation>
+                {edu.startDate} - {edu.endDate} | {edu.location}
+              </DesktopDateAndLocation>
+              <MobileDateAndLocation>
+                {edu.startDate} - {edu.endDate}
+                <br />
+                {edu.location}
+              </MobileDateAndLocation>
+            </EducationInfo>
+            <DescriptionContainer>
+              {edu.description && <p>{edu.description}</p>}
+            </DescriptionContainer>
+          </CardContent>
         </InfoCard>
       ))}
     </Container>
@@ -38,22 +47,55 @@ const Container = styled("div", {
   width: "100%",
 });
 
-const InfoContainer = styled("div", {
-  display: "flex",
-  flexDirection: "column",
-  gap: "10px",
+const CardContent = styled("div", {
+  width: "100%",
+  maxHeight: "340px",
+  overflowY: "auto", // Enable vertical scrolling
+  paddingRight: "10px", // Optional: for scrollbar space
+  "@mobileAndDown": {
+    maxHeight: "400px",
+  },
+});
+
+const EducationInfo = styled("div", {
   textAlign: "center",
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  flexDirection: "column",
+  paddingTop: "8px",
+  borderBottom: "0.2rem solid $border",
 
   h2: {
     margin: 0,
+    fontSize: "1.5rem",
   },
+
   h3: {
     margin: 0,
-    fontWeight: "normal",
+    fontSize: "1.2rem",
     color: "$secondaryText",
   },
-  p: {
-    margin: 0,
-    color: "$secondaryText",
+
+  "@mobileAndDown": {
+    paddingTop: "0",
   },
+});
+
+const DesktopDateAndLocation = styled("p", {
+  "@mobileAndDown": {
+    display: "none",
+  },
+});
+
+const MobileDateAndLocation = styled("div", {
+  display: "none",
+  "@mobileAndDown": {
+    display: "block",
+  },
+});
+
+const DescriptionContainer = styled("div", {
+  textAlign: "center",
+  paddingTop: "4px",
 });

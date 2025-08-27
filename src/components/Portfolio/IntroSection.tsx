@@ -32,7 +32,9 @@ export function IntroSection({ data }: IntroProps) {
       </SocialsContainer>
       <ContactsContainer>
         <ContactHeaderColumn>
-          <Mail />
+          <Tooltip content="Email Addresses">
+            <Mail />
+          </Tooltip>
         </ContactHeaderColumn>
         <ContactItemColumn>
           {data.contacts.map((contact) =>
@@ -48,7 +50,9 @@ export function IntroSection({ data }: IntroProps) {
           )}
         </ContactItemColumn>
         <ContactHeaderColumn>
-          <Phone />
+          <Tooltip content="Phone Numbers">
+            <Phone />
+          </Tooltip>
         </ContactHeaderColumn>
         <ContactItemColumn>
           {data.contacts.map((contact) =>
