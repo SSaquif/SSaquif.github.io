@@ -3,10 +3,9 @@ export type Education = {
   institution: string;
   logo?: string;
   location: string;
-  startDate: string; // YYYY-MM format
-  endDate: string; // YYYY-MM format
-  institutionWebsite?: string;
-  details?: string[];
+  startDate: string;
+  endDate: string;
+  description?: string;
 };
 
 export const EDUCATION: Education[] = [
@@ -15,16 +14,9 @@ export const EDUCATION: Education[] = [
     institution: "McGill University",
     logo: "/logos/mcgill-university-coa.png",
     location: "Montreal, QC",
-    startDate: "2013-01",
-    endDate: "2019-05",
-    institutionWebsite: "https://www.mcgill.ca",
-    details: [
-      //"Graduated May 2019",
-      //"Capstone project led to publication at MSR Conference 2018",
-    ],
-    //     details: [
-    //       "Relevant Coursework: Data Structures and Algorithms, Database Systems, Operating Systems, Software Design, Web Development, Mobile App Development, Cloud Computing",
-    //       "Extracurriculars: Member of the McGill Computer Science Club, Volunteer Tutor for first-year programming courses",
-    //     ],
+    startDate: "Jan 2013",
+    endDate: "May 2019",
+    description:
+      " As a software engineering graduate from McGill University, I gained a solid foundation in computer science principles and software development practices. My coursework covered a wide range of topics including algorithms, data structures, databases, web development, and software design. I learned about concepts such as object-oriented programming, functional programming, aspect-oriented programming, concurrent vs. parallel programming, and software testing concepts such as unit testing, integration testing, system testing, acceptance testing, and test-driven development (TDD). I also had the opportunity to work on several team projects, which helped me develop my collaboration and communication skills. Overall, my education at McGill has prepared me well for a career in software engineering.",
   },
 ];
