@@ -66,9 +66,11 @@ export function IntroSection({ data }: IntroProps) {
                     verticalAlign: "-5%",
                   }}
                 />{" "}
-                <CopyToClipboard value={phone.number}>
-                  {phone.number}
-                </CopyToClipboard>
+                <TooltipComponent content="Click to copy to clipboard">
+                  <CopyToClipboard value={phone.number}>
+                    {phone.number}
+                  </CopyToClipboard>
+                </TooltipComponent>
               </li>
             ))
           )}

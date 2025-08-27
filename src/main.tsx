@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { SiteStateProvider } from "./context/SiteStateContext";
+import { ToastProvider } from "./context/ToastContext.tsx";
 import HomeLayout from "./routes/HomeLayout.tsx";
 import Portfolio from "./components/Portfolio/Portfolio.tsx";
 import Notfound from "./routes/NotFound.tsx";
@@ -23,8 +24,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <SiteStateProvider>
-      <RouterProvider router={router} />
-    </SiteStateProvider>
+    <ToastProvider>
+      <SiteStateProvider>
+        <RouterProvider router={router} />
+      </SiteStateProvider>
+    </ToastProvider>
   </StrictMode>
 );
