@@ -19,9 +19,13 @@ export function IntroSection({ data }: IntroProps) {
           Object.entries(data.socials).map(([key, social]) => (
             <li key={key}>
               <TooltipComponent content={social.url}>
-                <a href={social.url} target="_blank" rel="noopener noreferrer">
+                <SocialsLink
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {social.icon}
-                </a>
+                </SocialsLink>
               </TooltipComponent>
             </li>
           ))}
@@ -84,6 +88,25 @@ const Container = styled("section", {
   // border: "1px solid hotpink",
 });
 
+const SocialsContainer = styled("ul", {
+  listStyle: "none",
+  display: "flex",
+  flexDirection: "row",
+  gap: "1rem",
+  padding: 0,
+});
+
+const SocialsLink = styled("a", {
+  color: "$accent",
+  opacity: 0.8,
+  "&:hover": {
+    opacity: 1,
+  },
+  "&:visited": {
+    color: "$accent",
+  },
+});
+
 // 2 rows and 2 columns grid
 const ContactsContainer = styled("div", {
   display: "grid",
@@ -132,12 +155,4 @@ const ContactItemColumn = styled("ul", {
     justifyContent: "center",
     // gap: "2px",
   },
-});
-
-const SocialsContainer = styled("ul", {
-  listStyle: "none",
-  display: "flex",
-  flexDirection: "row",
-  gap: "1rem",
-  padding: 0,
 });
