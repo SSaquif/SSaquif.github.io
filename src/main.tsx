@@ -24,10 +24,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ToastProvider>
-      <SiteStateProvider>
+    <SiteStateProvider>
+      <ToastProvider>
         <RouterProvider router={router} />
-      </SiteStateProvider>
-    </ToastProvider>
+      </ToastProvider>
+    </SiteStateProvider>
   </StrictMode>
 );
