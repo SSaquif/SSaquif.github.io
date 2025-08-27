@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useOutletContext } from "react-router-dom";
 import Emoji from "a11y-react-emoji";
 import { styled } from "../../stitches.config";

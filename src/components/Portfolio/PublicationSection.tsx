@@ -1,7 +1,6 @@
 import type { Publication } from "../../data/Publication";
 import { InfoCard } from "../Card/InfoCard";
 import { styled } from "../../stitches.config";
-import { Card } from "../Card/Card";
 import { Chip } from "../Chip";
 
 interface PublicationSectionProps {
@@ -26,8 +25,6 @@ export function PublicationSection({ data }: PublicationSectionProps) {
               </a>
             </PublicationInfo>
             <PublicationDetails>
-              {/* <TechContainer> */}
-              {/* <strong>Tech Stack</strong> */}
               <TechChipsContainer>
                 {pub.technologies.map((tech) => {
                   return <Chip key={tech}>{tech}</Chip>;
@@ -98,15 +95,6 @@ const PublicationDetails = styled("div", {
   display: "flex",
   flexDirection: "column",
   gap: "8px",
-});
-
-const TechContainer = styled("div", {
-  display: "grid",
-  gridTemplateColumns: "15% 80%",
-  padding: "0 8px",
-  "@mobileAndDown": {
-    gap: "6px",
-  },
 });
 
 const TechChipsContainer = styled("div", {

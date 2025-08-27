@@ -35,8 +35,6 @@ export function ProjectSection({ data }: ProjectSectionProps) {
                 )}
               </span>
             </ProjectInfo>
-            {/* <TechContainer> */}
-            {/* <strong>Tech Stack</strong>{" "} */}
             <ProjectDetails>
               <TechChipsContainer>
                 {project.technologies.map((tech) => {
@@ -104,16 +102,6 @@ const ProjectDetails = styled("div", {
   display: "flex",
   flexDirection: "column",
   gap: "8px",
-});
-
-const TechContainer = styled("div", {
-  display: "grid",
-  gridTemplateColumns: "15% 80%",
-  padding: "8px 8px",
-  "@mobileAndDown": {
-    gap: "6px",
-    padding: "4px 0",
-  },
 });
 
 const TechChipsContainer = styled("div", {

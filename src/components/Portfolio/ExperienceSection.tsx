@@ -35,8 +35,6 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
               </MobileDateAndLocation>
             </PositionInfo>
             <PositionDetails>
-              {/* <TechContainer> */}
-              {/* <strong>Tech Stack</strong>{" "} */}
               <TechChipsContainer>
                 {position.technologies.map((tech) => {
                   return <Chip key={tech}>{tech}</Chip>;
@@ -141,15 +139,6 @@ const PositionDetails = styled("div", {
   display: "flex",
   flexDirection: "column",
   gap: "8px",
-});
-
-const TechContainer = styled("div", {
-  display: "grid",
-  gridTemplateColumns: "15% 80%",
-  padding: "0 8px",
-  "@mobileAndDown": {
-    gap: "6px",
-  },
 });
 
 const TechChipsContainer = styled("div", {
