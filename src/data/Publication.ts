@@ -6,8 +6,8 @@ export type Publication = {
   conference?: string;
   journal?: string;
   abstract?: string;
-  technologies?: string[];
-  description?: string;
+  technologies: string[];
+  description: string;
 };
 
 export const PUBLICATIONS: Publication[] = [
