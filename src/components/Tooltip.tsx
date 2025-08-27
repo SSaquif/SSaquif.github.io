@@ -33,7 +33,7 @@ const StyledTooltipContent = styled(RadixTooltip.Content, {
   color: "$primaryText",
   padding: "10px 15px",
   borderRadius: "5px",
-  zIndex: "$tooltip",
+  zIndex: "1200",
   border: "1px solid $border",
 });
 

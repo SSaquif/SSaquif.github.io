@@ -28,7 +28,7 @@ function HomeLayout() {
         <Header>
           <HeaderItemContainer>
             <HamburgerButton onClick={toggleMobileDrawer}>
-              {mobileDrawerOpen ? <SquareX /> : <SquareMenu />}
+              {mobileDrawerOpen ? <></> : <SquareMenu />}
             </HamburgerButton>
           </HeaderItemContainer>
           <DesktopHeaderButtonContainer>
@@ -70,9 +70,14 @@ function HomeLayout() {
 
         {/* Mobile Drawer */}
         <NavDrawer open={mobileDrawerOpen}>
-          <ThemeToggleMobile onClick={toggleDarkMode}>
-            {darkMode ? <Sun /> : <Moon />}
-          </ThemeToggleMobile>
+          <IconContainer>
+            <ThemeToggleMobile onClick={toggleDarkMode}>
+              {darkMode ? <Sun /> : <Moon />}
+            </ThemeToggleMobile>
+            <HamburgerButton onClick={toggleMobileDrawer}>
+              {mobileDrawerOpen ? <SquareX /> : <SquareMenu />}
+            </HamburgerButton>
+          </IconContainer>
           <Outlet context={{ slot: "mobileDrawer" }} />
         </NavDrawer>
       </Container>
@@ -113,6 +118,8 @@ const Header = styled("header", {
 const HeaderItemContainer = styled("div", {
   display: "flex",
   alignItems: "center",
+  justifyContent: "flex-end",
+  width: "100%",
   gap: "0.5rem",
 });
 
@@ -262,7 +269,7 @@ const NavDrawer = styled("nav", {
   transform: "translateX(100%)",
   transition: "transform 0.3s ease, border 0.3s ease",
   padding: "1rem",
-  zIndex: 1000, // ensure it overlays other content
+  zIndex: 1100, // ensure it overlays other content
 
   variants: {
     open: {
@@ -275,6 +282,14 @@ const NavDrawer = styled("nav", {
   "@tabletAndUp": {
     display: "none",
   },
+});
+
+const IconContainer = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  width: "100%",
+  gap: "0.25rem",
 });
 
 export default HomeLayout;
