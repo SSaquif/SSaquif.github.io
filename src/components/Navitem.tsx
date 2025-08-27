@@ -1,6 +1,9 @@
 import { styled } from "../stitches.config";
 
-export const NavItem = styled("div", {
+export const NavItem = styled("button", {
+  // remove all default button styles
+  all: "unset",
+  width: "100%",
   padding: "0.5rem 1rem",
   color: "$primaryText",
   borderBottom: "1px solid $border",
