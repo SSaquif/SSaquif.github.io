@@ -1,7 +1,10 @@
+import { useRef } from "react";
 import { useOutletContext } from "react-router-dom";
+import Emoji from "a11y-react-emoji";
 import { styled } from "../../stitches.config";
 import { NavItem } from "../Navitem";
 import { ABOUT_ME } from "../../data/AboutMe";
+import { IntroSection } from "./IntroSection";
 import { AboutMeSection } from "./AboutMeSection";
 import { ExperienceSection } from "./ExperienceSection";
 import { EducationSection } from "./EducationSection";
@@ -11,57 +14,139 @@ import { PROFESSIONAL_EXPERIENCES } from "../../data/Experience";
 import { EDUCATION } from "../../data/Education";
 import { PUBLICATIONS } from "../../data/Publication";
 import { PROJECTS } from "../../data/Projects";
+import {
+  usePortfolioNavigationRefs,
+  type PortfolioNavigationRefs,
+  type SectionRef,
+} from "../../context/PortfolioNavigationRefsContext";
 
 function Portfolio() {
   const { slot } = useOutletContext<{
     slot: "main" | "drawer" | "mobileDrawer";
   }>();
 
+  const refs = usePortfolioNavigationRefs();
+
+  const scrollToSection = (ref: SectionRef) => {
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <>
-      {slot === "main" && <PortfolioContent />}
-      {slot === "drawer" && <DrawerContent />}
-      {slot === "mobileDrawer" && <MobileDrawerContent />}
+      {slot === "main" && <PortfolioContent refs={refs} />}
+      {slot === "drawer" && (
+        <DrawerContent scrollToSection={scrollToSection} refs={refs} />
+      )}
+      {slot === "mobileDrawer" && (
+        <MobileDrawerContent scrollToSection={scrollToSection} refs={refs} />
+      )}
     </>
   );
 }
 
-function PortfolioContent() {
+function PortfolioContent({ refs }: { refs: PortfolioNavigationRefs }) {
+  const {
+    introRef,
+    aboutRef,
+    experienceRef,
+    educationRef,
+    publicationRef,
+    projectsRef,
+  } = refs;
   return (
     <Container>
-      <AboutMeSection data={ABOUT_ME} />
-      <h1>Experience</h1>
-      <ExperienceSection data={PROFESSIONAL_EXPERIENCES} />
-      <h1>Education</h1>
-      <EducationSection data={EDUCATION} />
-      <h1>Publication</h1>
-      <PublicationSection data={PUBLICATIONS} />
-      <h1>Projects</h1>
-      <ProjectSection data={PROJECTS} />
+      <div ref={introRef}>
+        <IntroSection data={ABOUT_ME} />
+      </div>
+      <div ref={aboutRef}>
+        <h1 style={{ textAlign: "center" }}>
+          Hi
+          <Emoji
+            symbol="👋"
+            label="waving-hand"
+            style={{
+              verticalAlign: "7%",
+            }}
+          />
+        </h1>
+        <AboutMeSection data={ABOUT_ME} />
+      </div>
+
+      <div ref={experienceRef}>
+        <h1 style={{ textAlign: "center" }}>Experience</h1>
+        <ExperienceSection data={PROFESSIONAL_EXPERIENCES} />
+      </div>
+
+      <div ref={educationRef}>
+        <h1 style={{ textAlign: "center" }}>Education</h1>
+        <EducationSection data={EDUCATION} />
+      </div>
+
+      <div ref={publicationRef}>
+        <h1 style={{ textAlign: "center" }}>Publication</h1>
+        <PublicationSection data={PUBLICATIONS} />
+      </div>
+
+      <div ref={projectsRef}>
+        <h1 style={{ textAlign: "center" }}>Projects</h1>
+        <ProjectSection data={PROJECTS} />
+      </div>
     </Container>
   );
 }
 
-function DrawerContent() {
+type DrawerProps = {
+  scrollToSection: (ref: SectionRef) => void;
+  refs: PortfolioNavigationRefs;
+};
+
+function DrawerContent({ scrollToSection, refs }: DrawerProps) {
+  const {
+    introRef,
+    aboutRef,
+    experienceRef,
+    educationRef,
+    publicationRef,
+    projectsRef,
+  } = refs;
+
   return (
     <div>
-      <NavItem>About</NavItem>
-      <NavItem>Contact</NavItem>
-      <NavItem>Experience</NavItem>
-      <NavItem>Education</NavItem>
-      <NavItem>Publication</NavItem>
+      <NavItem onClick={() => scrollToSection(introRef)}>Contact/Intro</NavItem>
+      <NavItem onClick={() => scrollToSection(aboutRef)}>About</NavItem>
+      <NavItem onClick={() => scrollToSection(experienceRef)}>
+        Experience
+      </NavItem>
+      <NavItem onClick={() => scrollToSection(educationRef)}>Education</NavItem>
+      <NavItem onClick={() => scrollToSection(publicationRef)}>
+        Publication
+      </NavItem>
+      <NavItem onClick={() => scrollToSection(projectsRef)}>Projects</NavItem>
     </div>
   );
 }
 
-function MobileDrawerContent() {
+function MobileDrawerContent({ scrollToSection, refs }: DrawerProps) {
+  const {
+    introRef,
+    aboutRef,
+    experienceRef,
+    educationRef,
+    publicationRef,
+    projectsRef,
+  } = refs;
   return (
     <div>
-      <NavItem>About</NavItem>
-      <NavItem>Contact</NavItem>
-      <NavItem>Experience</NavItem>
-      <NavItem>Education</NavItem>
-      <NavItem>Publication</NavItem>
+      <NavItem onClick={() => scrollToSection(introRef)}>Contact/Intro</NavItem>
+      <NavItem onClick={() => scrollToSection(aboutRef)}>About</NavItem>
+      <NavItem onClick={() => scrollToSection(experienceRef)}>
+        Experience
+      </NavItem>
+      <NavItem onClick={() => scrollToSection(educationRef)}>Education</NavItem>
+      <NavItem onClick={() => scrollToSection(publicationRef)}>
+        Publication
+      </NavItem>
+      <NavItem onClick={() => scrollToSection(projectsRef)}>Projects</NavItem>
     </div>
   );
 }

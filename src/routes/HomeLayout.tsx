@@ -9,6 +9,7 @@ import {
   StyledMoon as Moon,
 } from "../components/Icons/Icons";
 import { useSiteState } from "../context/SiteStateContext";
+import { PortfolioNavigationRefsProvider } from "../context/PortfolioNavigationRefsContext";
 
 function HomeLayout() {
   const {
@@ -21,42 +22,44 @@ function HomeLayout() {
   } = useSiteState();
 
   return (
-    <Container className={darkMode ? darkTheme.className : ""}>
-      <Header>
-        <HeaderItemContainer>
-          <HamburgerButton onClick={toggleMobileDrawer}>
-            {mobileDrawerOpen ? <SquareX /> : <SquareMenu />}
-          </HamburgerButton>
-        </HeaderItemContainer>
-        <DesktopHeaderButtonContainer>
-          <ThemeToggle onClick={toggleDarkMode}>
-            {darkMode ? <Sun /> : <Moon />}
-          </ThemeToggle>
-          <DrawerButton onClick={toggleRightDrawer}>
-            {rightDrawerOpen ? <PanelRightClose /> : <PanelRightOpen />}
-          </DrawerButton>
-        </DesktopHeaderButtonContainer>
-      </Header>
-      <Middle>
-        <Main expanded={!rightDrawerOpen}>
-          <Outlet context={{ slot: "main" }} />
-        </Main>
-        <Drawer open={rightDrawerOpen}>
-          <Outlet context={{ slot: "drawer" }} />
-        </Drawer>
-      </Middle>
-      <Footer>
-        <CopyrightText>© 2025 Sadnan Saquif</CopyrightText>
-      </Footer>
+    <PortfolioNavigationRefsProvider>
+      <Container className={darkMode ? darkTheme.className : ""}>
+        <Header>
+          <HeaderItemContainer>
+            <HamburgerButton onClick={toggleMobileDrawer}>
+              {mobileDrawerOpen ? <SquareX /> : <SquareMenu />}
+            </HamburgerButton>
+          </HeaderItemContainer>
+          <DesktopHeaderButtonContainer>
+            <ThemeToggle onClick={toggleDarkMode}>
+              {darkMode ? <Sun /> : <Moon />}
+            </ThemeToggle>
+            <DrawerButton onClick={toggleRightDrawer}>
+              {rightDrawerOpen ? <PanelRightClose /> : <PanelRightOpen />}
+            </DrawerButton>
+          </DesktopHeaderButtonContainer>
+        </Header>
+        <Middle>
+          <Main expanded={!rightDrawerOpen}>
+            <Outlet context={{ slot: "main" }} />
+          </Main>
+          <Drawer open={rightDrawerOpen}>
+            <Outlet context={{ slot: "drawer" }} />
+          </Drawer>
+        </Middle>
+        <Footer>
+          <CopyrightText>© 2025 Sadnan Saquif</CopyrightText>
+        </Footer>
 
-      {/* Mobile Drawer */}
-      <NavDrawer open={mobileDrawerOpen}>
-        <ThemeToggleMobile onClick={toggleDarkMode}>
-          {darkMode ? <Sun /> : <Moon />}
-        </ThemeToggleMobile>
-        <Outlet context={{ slot: "mobileDrawer" }} />
-      </NavDrawer>
-    </Container>
+        {/* Mobile Drawer */}
+        <NavDrawer open={mobileDrawerOpen}>
+          <ThemeToggleMobile onClick={toggleDarkMode}>
+            {darkMode ? <Sun /> : <Moon />}
+          </ThemeToggleMobile>
+          <Outlet context={{ slot: "mobileDrawer" }} />
+        </NavDrawer>
+      </Container>
+    </PortfolioNavigationRefsProvider>
   );
 }
 
