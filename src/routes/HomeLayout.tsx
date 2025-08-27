@@ -10,6 +10,7 @@ import {
 } from "../components/Icons/Icons";
 import { useSiteState } from "../context/SiteStateContext";
 import { PortfolioNavigationRefsProvider } from "../context/PortfolioNavigationRefsContext";
+import { Tooltip } from "../components/Tooltip";
 
 function HomeLayout() {
   const {
@@ -32,10 +33,26 @@ function HomeLayout() {
           </HeaderItemContainer>
           <DesktopHeaderButtonContainer>
             <ThemeToggle onClick={toggleDarkMode}>
-              {darkMode ? <Sun /> : <Moon />}
+              {darkMode ? (
+                <Tooltip content="Light Mode">
+                  <Sun />
+                </Tooltip>
+              ) : (
+                <Tooltip content="Dark Mode">
+                  <Moon />
+                </Tooltip>
+              )}
             </ThemeToggle>
             <DrawerButton onClick={toggleRightDrawer}>
-              {rightDrawerOpen ? <PanelRightClose /> : <PanelRightOpen />}
+              {rightDrawerOpen ? (
+                <Tooltip content="Close Panel">
+                  <PanelRightClose />
+                </Tooltip>
+              ) : (
+                <Tooltip content="Open Panel">
+                  <PanelRightOpen />
+                </Tooltip>
+              )}
             </DrawerButton>
           </DesktopHeaderButtonContainer>
         </Header>
@@ -89,6 +106,7 @@ const Header = styled("header", {
     position: "sticky",
     top: 0,
     borderBottom: "0.2rem solid $border",
+    zIndex: 1000, // ensure it overlays other content
   },
 });
 

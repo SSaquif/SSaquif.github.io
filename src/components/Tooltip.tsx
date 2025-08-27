@@ -1,7 +1,7 @@
-import * as Tooltip from "@radix-ui/react-tooltip";
+import * as RadixTooltip from "@radix-ui/react-tooltip";
 import { styled } from "../stitches.config";
 
-export function TooltipComponent({
+export function Tooltip({
   content,
   children,
 }: {
@@ -9,26 +9,26 @@ export function TooltipComponent({
   children: React.ReactNode;
 }) {
   return (
-    <Tooltip.Provider>
-      <Tooltip.Root>
+    <RadixTooltip.Provider>
+      <RadixTooltip.Root>
         <StyledTooltipTrigger>{children}</StyledTooltipTrigger>
-        <Tooltip.Portal>
+        <RadixTooltip.Portal>
           <StyledTooltipContent>
             {content}
             <StyledTooltipArrow />
           </StyledTooltipContent>
-        </Tooltip.Portal>
-      </Tooltip.Root>
-    </Tooltip.Provider>
+        </RadixTooltip.Portal>
+      </RadixTooltip.Root>
+    </RadixTooltip.Provider>
   );
 }
 
-const StyledTooltipTrigger = styled(Tooltip.Trigger, {
+const StyledTooltipTrigger = styled(RadixTooltip.Trigger, {
   all: "unset",
   cursor: "pointer",
 });
 
-const StyledTooltipContent = styled(Tooltip.Content, {
+const StyledTooltipContent = styled(RadixTooltip.Content, {
   backgroundColor: "$secondaryBackground",
   color: "$primaryText",
   padding: "10px 15px",
@@ -37,7 +37,7 @@ const StyledTooltipContent = styled(Tooltip.Content, {
   border: "1px solid $border",
 });
 
-const StyledTooltipArrow = styled(Tooltip.Arrow, {
+const StyledTooltipArrow = styled(RadixTooltip.Arrow, {
   fill: "$secondaryBackground",
   stroke: "$border",
 });

@@ -3,7 +3,7 @@ import { Phone, Mail } from "lucide-react";
 import type { AboutMe } from "../../data/AboutMe";
 import { styled } from "../../stitches.config";
 import { CopyToClipboard } from "../CopyToClipboard";
-import { TooltipComponent } from "../Tooltip";
+import { Tooltip } from "../Tooltip";
 
 interface IntroProps {
   data: AboutMe;
@@ -18,7 +18,7 @@ export function IntroSection({ data }: IntroProps) {
         {data.socials &&
           Object.entries(data.socials).map(([key, social]) => (
             <li key={key}>
-              <TooltipComponent content={social.url}>
+              <Tooltip content={social.url}>
                 <SocialsLink
                   href={social.url}
                   target="_blank"
@@ -26,7 +26,7 @@ export function IntroSection({ data }: IntroProps) {
                 >
                   {social.icon}
                 </SocialsLink>
-              </TooltipComponent>
+              </Tooltip>
             </li>
           ))}
       </SocialsContainer>
@@ -39,9 +39,9 @@ export function IntroSection({ data }: IntroProps) {
             contact.emails.map((email) => {
               return (
                 <li key={email}>
-                  <TooltipComponent content="Click to copy to clipboard">
+                  <Tooltip content="Click to copy to clipboard">
                     <CopyToClipboard value={email}>{email}</CopyToClipboard>
-                  </TooltipComponent>
+                  </Tooltip>
                 </li>
               );
             })
@@ -66,11 +66,11 @@ export function IntroSection({ data }: IntroProps) {
                     verticalAlign: "-5%",
                   }}
                 />{" "}
-                <TooltipComponent content="Click to copy to clipboard">
+                <Tooltip content="Click to copy to clipboard">
                   <CopyToClipboard value={phone.number}>
                     {phone.number}
                   </CopyToClipboard>
-                </TooltipComponent>
+                </Tooltip>
               </li>
             ))
           )}
