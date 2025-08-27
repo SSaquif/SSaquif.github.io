@@ -112,7 +112,7 @@ function DrawerContent({ scrollToSection, refs }: DrawerProps) {
 
   return (
     <div>
-      <NavItem onClick={() => scrollToSection(introRef)}>Contact/Intro</NavItem>
+      <NavItem onClick={() => scrollToSection(introRef)}>Contact</NavItem>
       <NavItem onClick={() => scrollToSection(aboutRef)}>About</NavItem>
       <NavItem onClick={() => scrollToSection(experienceRef)}>
         Experience
@@ -137,7 +137,7 @@ function MobileDrawerContent({ scrollToSection, refs }: DrawerProps) {
   } = refs;
   return (
     <div>
-      <NavItem onClick={() => scrollToSection(introRef)}>Contact/Intro</NavItem>
+      <NavItem onClick={() => scrollToSection(introRef)}>Contact</NavItem>
       <NavItem onClick={() => scrollToSection(aboutRef)}>About</NavItem>
       <NavItem onClick={() => scrollToSection(experienceRef)}>
         Experience

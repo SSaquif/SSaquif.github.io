@@ -70,6 +70,7 @@ const Container = styled("div", {
   height: "100%",
   // to prevent overflow and scroll, scroll will be inside main (& Drawer if ever needed)
   maxHeight: "100vh",
+  color: "$primaryText",
 
   "@supports (height: 100dvh)": {
     height: "100dvh", // Use 100dvh if supported

@@ -2,6 +2,8 @@ import Emoji from "a11y-react-emoji";
 import { Phone, Mail } from "lucide-react";
 import type { AboutMe } from "../../data/AboutMe";
 import { styled } from "../../stitches.config";
+import { CopyToClipboard } from "../CopyToClipboard";
+import { TooltipComponent } from "../Tooltip";
 
 interface IntroProps {
   data: AboutMe;
@@ -16,24 +18,32 @@ export function IntroSection({ data }: IntroProps) {
         {data.socials &&
           Object.entries(data.socials).map(([key, social]) => (
             <li key={key}>
-              <a href={social.url} target="_blank" rel="noopener noreferrer">
-                {social.icon}
-              </a>
+              <TooltipComponent content={social.url}>
+                <a href={social.url} target="_blank" rel="noopener noreferrer">
+                  {social.icon}
+                </a>
+              </TooltipComponent>
             </li>
           ))}
       </SocialsContainer>
       <ContactsContainer>
         <ContactHeaderColumn>
-          {/* <p>Emails</p> */}
           <Mail />
         </ContactHeaderColumn>
         <ContactItemColumn>
           {data.contacts.map((contact) =>
-            contact.emails.map((email) => <li key={email}>{email}</li>)
+            contact.emails.map((email) => {
+              return (
+                <li key={email}>
+                  <TooltipComponent content="Click to copy to clipboard">
+                    <CopyToClipboard value={email}>{email}</CopyToClipboard>
+                  </TooltipComponent>
+                </li>
+              );
+            })
           )}
         </ContactItemColumn>
         <ContactHeaderColumn>
-          {/* <p>Phone</p> */}
           <Phone />
         </ContactHeaderColumn>
         <ContactItemColumn>
@@ -52,7 +62,9 @@ export function IntroSection({ data }: IntroProps) {
                     verticalAlign: "-5%",
                   }}
                 />{" "}
-                {phone.number}
+                <CopyToClipboard value={phone.number}>
+                  {phone.number}
+                </CopyToClipboard>
               </li>
             ))
           )}
