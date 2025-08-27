@@ -1,4 +1,10 @@
-import { useState, createContext, useContext, type ReactNode } from "react";
+import {
+  useState,
+  createContext,
+  useContext,
+  type ReactNode,
+  type MouseEvent,
+} from "react";
 
 type SiteState = {
   rightDrawerOpen: boolean;
@@ -19,9 +25,18 @@ function SiteStateProvider({ children }: { children: ReactNode }) {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  const toggleRightDrawer = () => setRightDrawerOpen(!rightDrawerOpen);
-  const toggleMobileDrawer = () => setMobileDrawerOpen(!mobileDrawerOpen);
-  const toggleDarkMode = () => setDarkMode(!darkMode);
+  const toggleRightDrawer = (ev?: MouseEvent) => {
+    ev?.stopPropagation();
+    setRightDrawerOpen(!rightDrawerOpen);
+  };
+  const toggleMobileDrawer = (ev?: MouseEvent) => {
+    ev?.stopPropagation();
+    setMobileDrawerOpen(!mobileDrawerOpen);
+  };
+  const toggleDarkMode = (ev?: MouseEvent) => {
+    ev?.stopPropagation();
+    setDarkMode(!darkMode);
+  };
 
   return (
     <SiteStateContext.Provider
